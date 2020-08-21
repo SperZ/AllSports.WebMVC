@@ -5,19 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Data
+namespace AllSports.Models.FanModels
 {
-    public class Fan :IPerson , ILocation
+    public class FanListItem
     {
-        [Key]
         public int FanId { get; set; }
-        [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
-        public StateAbbreviation State { get; set; }
-        [Required]
+        [Display(Name = "City")]
         public string CityName { get; set; }
-        public ICollection<Team> Team { get; set; }
     }
 }

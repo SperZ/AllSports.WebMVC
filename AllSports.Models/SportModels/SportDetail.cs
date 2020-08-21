@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Data
+namespace AllSports.Models.SportModels
 {
-    public class Sport
+    public class SportDetail
     {
-        [Key]
         public int SportId { get; set; }
-        [Required]
         public string SportName { get; set; }
-        [Required]
         public int YearInvented { get; set; }
         public string Description { get; set; }
     }

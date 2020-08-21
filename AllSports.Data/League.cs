@@ -12,9 +12,15 @@ namespace AllSports.Data
     {
         [Key]
         public int LeagueId { get; set; }
+        [Required]
         public string LeagueName { get; set; }
+        [Required]
+        public int NumberOfTeams { get; set; }
         public string Commisioner { get; set; }
+        [Required]
         public int LeagueInception { get; set; }
+        [Required]
+        public string BaseCountry { get; set; }
         public int SportId { get; set; }
         [ForeignKey(nameof(SportId))]
         public virtual Sport Sport { get; set; }

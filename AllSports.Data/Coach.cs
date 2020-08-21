@@ -13,9 +13,11 @@ namespace AllSports.Data
     {
         [Key]
         public int CoachId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
-        public int YearsWithTeam { get; set; }
+        public int? YearsWithTeam { get; set; }
         public string College { get; set; }
         public TypeOfCoach CoachPosition { get; set; }
         public int? TeamId { get; set; }

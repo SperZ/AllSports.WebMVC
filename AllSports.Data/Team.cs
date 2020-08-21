@@ -12,12 +12,15 @@ namespace AllSports.Data
     {
         [Key]
         public int TeamId { get; set; }
+        [Required]
         public string TeamName { get; set; }
-        public int Wins { get; set; }
-        public int Losses { get; set; }
-        public decimal WinPercentage { get; set; }
-        public int CostOfTeam { get; set; }
+        public int? Wins { get; set; }
+        public int? Losses { get; set; }
+        public decimal? WinPercentage { get; set; }
+        public int? CostOfTeam { get; set; }
+        [Required]
         public string CityName { get; set; }
+        [Required]
         public StateAbbreviation State { get; set; }
         public string TeamOwner { get; set; }
         public int LeagueId { get; set; }

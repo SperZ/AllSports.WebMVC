@@ -12,13 +12,19 @@ namespace AllSports.Data
     {
         [Key]
         public int PlayerId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
-        public int JerseyNumber { get; set; }
+        public int? JerseyNumber { get; set; }
+        [Required]
         public string Height { get; set; }
-        public int YearsWithTeam { get; set; }
+        [Required]
+        public int Weight { get; set; }
+        public int? YearsWithTeam { get; set; }
         public string College { get; set; }
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }

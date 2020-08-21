@@ -8,7 +8,7 @@ namespace AllSports.Data
 {
     interface IInfo
     {
-        int YearsWithTeam { get; set; }
+        int? YearsWithTeam { get; set; }
         string College { get; set; }
     }
 }

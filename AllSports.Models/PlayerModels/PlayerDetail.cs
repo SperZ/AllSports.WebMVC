@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AllSports.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,13 +18,15 @@ namespace AllSports.Models.PlayerModels
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
         [Display(Name = "Number")]
-        public int JerseyNumber { get; set; }
+        public int? JerseyNumber { get; set; }
         public string Height { get; set; }
         [Display(Name = "Years With Team")]
-        public int YearsWithTeam { get; set; }
+        public int? YearsWithTeam { get; set; }
         public string College { get; set; }
         [Display(Name = "Twitter")]
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
+        [Display(Name = "Team")]
+        public string TeamName { get; set; }
     }
 }
