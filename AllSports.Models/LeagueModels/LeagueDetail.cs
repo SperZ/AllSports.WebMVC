@@ -18,5 +18,7 @@ namespace AllSports.Models.LeagueModels
         public int LeagueInception { get; set; }
         [Display(Name = "Country")]
         public string BaseCountry { get; set; }
+        [Display(Name = "Sport")]
+        public string SportName { get; set; }
     }
 }
