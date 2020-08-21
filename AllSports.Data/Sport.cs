@@ -16,5 +16,6 @@ namespace AllSports.Data
         [Required]
         public int YearInvented { get; set; }
         public string Description { get; set; }
+        public virtual ICollection<League> Leagues { get; set; }
     }
 }

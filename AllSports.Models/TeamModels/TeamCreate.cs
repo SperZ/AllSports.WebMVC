@@ -13,8 +13,8 @@ namespace AllSports.Models.TeamModels
         [Required]
         [Display(Name = "Team Name")]
         public string TeamName { get; set; }
-        public int? Wins { get; set; }
-        public int? Losses { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
         [Required]
         [Display(Name = "City")]
         public string CityName { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,9 +15,17 @@ namespace AllSports.Data
         public int TeamId { get; set; }
         [Required]
         public string TeamName { get; set; }
-        public int? Wins { get; set; }
-        public int? Losses { get; set; }
-        public decimal? WinPercentage { get; set; }
+        [DefaultValue(0)]
+        public int Wins { get; set; }
+        [DefaultValue(0)]
+        public int Losses { get; set; }
+        public decimal WinPercentage {
+            get
+            {
+                decimal percentage = Convert.ToDecimal(Wins / (Wins + Losses));
+                return percentage;
+            } 
+        }
         public int? CostOfTeam { get; set; }
         [Required]
         public string CityName { get; set; }
@@ -27,5 +36,7 @@ namespace AllSports.Data
         [ForeignKey(nameof(LeagueId))]
         public virtual League League { get; set; }
         public virtual ICollection<Fan> Fan { get; set; }
+        public virtual ICollection<Player> Players { get; set; }
+        public virtual ICollection<Coach> Coaches { get; set; }
     }
 }

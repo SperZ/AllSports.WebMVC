@@ -24,5 +24,7 @@ namespace AllSports.Data
         public int SportId { get; set; }
         [ForeignKey(nameof(SportId))]
         public virtual Sport Sport { get; set; }
+
+        public virtual ICollection<Team> Teams { get; set; }
     }
 }

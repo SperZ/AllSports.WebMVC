@@ -21,6 +21,7 @@ namespace AllSports.Models.PlayerModels
         [Display(Name = "Number")]
         public int? JerseyNumber { get; set; }
         public string Height { get; set; }
+        public int Weight { get; set; }
         [Display(Name = "Years With Team")]
         public int? YearsWithTeam { get; set; }
         public string College { get; set; }

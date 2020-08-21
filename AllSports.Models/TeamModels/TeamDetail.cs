@@ -17,7 +17,7 @@ namespace AllSports.Models.TeamModels
         public int Losses { get; set; }
         [Display(Name = "Win Percentage")]
         public decimal WinPercentage { get; set; }
-        public int CostOfTeam { get; set; }
+        public int? CostOfTeam { get; set; }
         [Display(Name = "City")]
         public string CityName { get; set; }
         [Display(Name = "State")]
@@ -25,6 +25,6 @@ namespace AllSports.Models.TeamModels
         [Display(Name = "Owner")]
         public string TeamOwner { get; set; }
         [Display(Name ="League")]
-        public int LeagueName { get; set; }
+        public string LeagueName { get; set; }
     }
 }

@@ -12,5 +12,10 @@ namespace AllSports.Models.TeamModels
         public int TeamId { get; set; }
         [Display(Name = "Team Name")]
         public string TeamName { get; set; }
+        [Display(Name = "Sport")]
+        public string SportName { get; set; }
+        [Display(Name = "League")]
+        public string LeagueName { get; set; }
+        
     }
 }
