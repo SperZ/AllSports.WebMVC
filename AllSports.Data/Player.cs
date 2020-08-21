@@ -17,8 +17,18 @@ namespace AllSports.Data
         [Required]
         public string LastName { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DateOfBirth { get; set; }
-        public int Age { get; set; }
+        public int Age
+        {
+            get
+            {
+                TimeSpan ageSpan = DateTime.Now - DateOfBirth;
+                double totalAgeInYear = ageSpan.TotalDays / 365.25;
+                var age = Convert.ToInt32(Math.Floor(totalAgeInYear));
+                return age;
+            }
+        }
         public int? JerseyNumber { get; set; }
         [Required]
         public string Height { get; set; }

@@ -54,20 +54,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoachModels\CoachCreate.cs" />
     <Compile Include="CoachModels\CoachDetail.cs" />
+    <Compile Include="CoachModels\CoachEdit.cs" />
+    <Compile Include="CoachModels\CoachListItem.cs" />
+    <Compile Include="FanModels\FanCreate.cs" />
     <Compile Include="FanModels\FanDetail.cs" />
+    <Compile Include="FanModels\FanEdit.cs" />
+    <Compile Include="FanModels\FanListItem.cs" />
+    <Compile Include="LeagueModels\LeagueCreate.cs" />
     <Compile Include="LeagueModels\LeagueDetail.cs" />
+    <Compile Include="LeagueModels\LeagueEdit.cs" />
+    <Compile Include="LeagueModels\LeagueListItem.cs" />
+    <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetail.cs" />
+    <Compile Include="PlayerModels\PlayerEdit.cs" />
+    <Compile Include="PlayerModels\PlayerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SportModels\SportDetail.cs" />
+    <Compile Include="SportModels\SportListItem.cs" />
+    <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamDetail.cs" />
+    <Compile Include="TeamModels\TeamEdit.cs" />
+    <Compile Include="TeamModels\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SportModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AllSports.Data\AllSports.Data.csproj">
       <Project>{9ab43e05-b0fb-4ab8-b112-3d8a5526bc62}</Project>

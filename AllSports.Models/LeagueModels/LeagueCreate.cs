@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace AllSports.Models.LeagueModels
 {
-    public class LeagueDetail
+    public class LeagueCreate
     {
-        public int LeagueId { get; set; }
-        [Display(Name = "League")]
+        [Required]
         public string LeagueName { get; set; }
+        [Required]
         public int NumberOfTeams { get; set; }
         public string Commisioner { get; set; }
-        [Display(Name = "Year of Inception")]
+        [Required]
         public int LeagueInception { get; set; }
-        [Display(Name = "Country")]
+        [Required]
         public string BaseCountry { get; set; }
+        public int SportId { get; set; }
     }
 }

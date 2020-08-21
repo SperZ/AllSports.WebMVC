@@ -1,18 +1,24 @@
-﻿using System;
+﻿using AllSports.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Models.CoachModels
+namespace AllSports.Models.FanModels
 {
-    public class CoachListItem
+    public class FanCreate
     {
-        public int CoachId { get; set; }
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        public StateAbbreviation State { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string CityName { get; set; }
     }
 }

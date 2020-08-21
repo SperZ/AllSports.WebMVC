@@ -1,5 +1,4 @@
-﻿using AllSports.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,26 +7,28 @@ using System.Threading.Tasks;
 
 namespace AllSports.Models.PlayerModels
 {
-   public class PlayerDetail
+    public class PlayerCreate
     {
-        public int PlayerId { get; set; }
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
+        [Required]
         public string LastName { get; set; }
-        [Display(Name = "Date of Birth")]
+        [Required]
+        [Display(Name = "Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
-        public int Age { get; set; }
-        [Display(Name = "Number")]
+        [Display(Name = "Jersey Number")]
         public int? JerseyNumber { get; set; }
+        [Required]
         public string Height { get; set; }
-        [Display(Name = "Years With Team")]
+        [Required]
+        public int Weight { get; set; }
+        [Display(Name =  "Years with Team")]
         public int? YearsWithTeam { get; set; }
         public string College { get; set; }
-        [Display(Name = "Twitter")]
+        [Display(Name = "Twitter Handle")]
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
-        [Display(Name = "Team")]
-        public string TeamName { get; set; }
     }
 }
