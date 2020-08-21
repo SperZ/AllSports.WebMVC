@@ -54,11 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoachModels\CoachDetail.cs" />
+    <Compile Include="FanModels\FanDetail.cs" />
+    <Compile Include="LeagueModels\LeagueDetail.cs" />
+    <Compile Include="PlayerModels\PlayerDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamModels\TeamDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SportModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AllSports.Data\AllSports.Data.csproj">
+      <Project>{9ab43e05-b0fb-4ab8-b112-3d8a5526bc62}</Project>
+      <Name>AllSports.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

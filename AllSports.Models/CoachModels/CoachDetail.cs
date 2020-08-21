@@ -1,25 +1,26 @@
-﻿using System;
+﻿using AllSports.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Data
+namespace AllSports.Models.CoachModels
 {
-    public enum TypeOfCoach { HeadCoach, AssistantCoach }
-    public class Coach : IPerson , IInfo
+   public  class CoachDetail
     {
-        [Key]
         public int CoachId { get; set; }
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Display(Name = "Years With Team")]
         public int YearsWithTeam { get; set; }
         public string College { get; set; }
+        [Display(Name = "Coaching Position ")]
         public TypeOfCoach CoachPosition { get; set; }
+
         public int? TeamId { get; set; }
-        [ForeignKey(nameof(TeamId))]
-        public virtual Team Team { get; set; }
     }
 }

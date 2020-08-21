@@ -1,28 +1,29 @@
-﻿using System;
+﻿using AllSports.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Data
+namespace AllSports.Models.TeamModels
 {
-    public class Team : ILocation
+    public class TeamDetail
     {
-        [Key]
         public int TeamId { get; set; }
+        [Display(Name = "Team Name")]   
         public string TeamName { get; set; }
         public int Wins { get; set; }
         public int Losses { get; set; }
+        [Display(Name = "Win Percentage")]
         public decimal WinPercentage { get; set; }
         public int CostOfTeam { get; set; }
+        [Display(Name = "City")]
         public string CityName { get; set; }
+        [Display(Name = "State")]
         public StateAbbreviation State { get; set; }
+        [Display(Name = "Owner")]
         public string TeamOwner { get; set; }
-        public int LeagueId { get; set; }
-        [ForeignKey(nameof(LeagueId))]
-        public virtual League League { get; set; }
-        public virtual ICollection<Fan> Fan { get; set; }
+        public int SportId { get; set; }
     }
 }

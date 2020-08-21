@@ -12,5 +12,6 @@ namespace AllSports.Data
         [Key]
         public int SportId { get; set; }
         public string SportName { get; set; }
+        public int YearInvented { get; set; }
     }
 }
