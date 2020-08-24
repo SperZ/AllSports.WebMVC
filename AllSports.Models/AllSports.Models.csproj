@@ -58,6 +58,7 @@
     <Compile Include="CoachModels\CoachDetail.cs" />
     <Compile Include="CoachModels\CoachEdit.cs" />
     <Compile Include="CoachModels\CoachListItem.cs" />
+    <Compile Include="CoachModels\Team_CoachListItem.cs" />
     <Compile Include="FanModels\FanCreate.cs" />
     <Compile Include="FanModels\FanDetail.cs" />
     <Compile Include="FanModels\FanEdit.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="LeagueModels\LeagueDetail.cs" />
     <Compile Include="LeagueModels\LeagueEdit.cs" />
     <Compile Include="LeagueModels\LeagueListItem.cs" />
+    <Compile Include="PlayerModels\Team_PlayerListItem.cs" />
     <Compile Include="TeamModels\League_TeamListItem.cs" />
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetail.cs" />

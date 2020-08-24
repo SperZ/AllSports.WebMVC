@@ -20,5 +20,6 @@ namespace AllSports.Models.FanModels
         [Required]
         [Display(Name = "City")]
         public string CityName { get; set; }
+        public string UserName { get; set; }
     }
 }
