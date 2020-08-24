@@ -26,17 +26,20 @@ namespace AllSports.Data
                 return percentage;
             } 
         }
-        public int? CostOfTeam { get; set; }
         [Required]
         public string CityName { get; set; }
         [Required]
         public StateAbbreviation State { get; set; }
-        public string TeamOwner { get; set; }
         public int LeagueId { get; set; }
         [ForeignKey(nameof(LeagueId))]
         public virtual League League { get; set; }
-        public virtual ICollection<Fan> Fan { get; set; }
+        public virtual ICollection<Fan> Fans { get; set; }
         public virtual ICollection<Player> Players { get; set; }
         public virtual ICollection<Coach> Coaches { get; set; }
+
+        public Team()
+        {
+            this.Fans = new HashSet<Fan>();
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace AllSports.Services
                 {
                     LeagueName= model.LeagueName,
                     LeagueInception = model.LeagueInception,
-                    Commissioner = model.Commissioner,
                     NumberOfTeams = model.NumberOfTeams,
                     BaseCountry = model.BaseCountry,
                     SportId = model.SportId 
@@ -68,7 +67,6 @@ namespace AllSports.Services
                     {
                         LeagueName = entity.LeagueName,
                         LeagueInception = entity.LeagueInception,
-                        Commisioner = entity.Commissioner,
                         NumberOfTeams = entity.NumberOfTeams,
                         BaseCountry = entity.BaseCountry,
                         SportName = entity.Sport.SportName
@@ -85,7 +83,6 @@ namespace AllSports.Services
                     .Leagues
                     .Single(e => e.LeagueId == model.LeagueId);
                 entity.NumberOfTeams = model.NumberOfTeams;
-                entity.Commissioner = model.Commisioner;
 
                 return ctx.SaveChanges() == 1;
             }

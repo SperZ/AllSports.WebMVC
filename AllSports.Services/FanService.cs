@@ -1,5 +1,6 @@
 ﻿using AllSports.Data;
 using AllSports.Models.FanModels;
+using AllSports.Models.TeamModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,30 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool ConnectFanToTeam(int fanId, OnlyTeamId model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var fan =
+                    ctx
+                    .Fans
+                    .Single(e => e.FanId == fanId && e.UserName == _userName);
 
-        public IEnumerable<FanListItem> GetFansByTeamId(int teamId)
+                var team =
+                    ctx
+                    .Teams
+                    .Single(e => e.TeamId == model.TeamId);
+
+                fan.Teams.Add(team);
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+
+            public IEnumerable<FanListItem> GetFansByTeamId(int teamId)
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -43,7 +66,7 @@ namespace AllSports.Services
                     ctx
                     .Teams
                     .Single(e => e.TeamId == teamId)
-                    .Fan
+                    .Fans
                     .Select(
                         e =>
                         new FanListItem()

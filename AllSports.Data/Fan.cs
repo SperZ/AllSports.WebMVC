@@ -19,6 +19,11 @@ namespace AllSports.Data
         [Required]
         public string CityName { get; set; }
         public string UserName { get; set; }
-        public ICollection<Team> Team { get; set; }
+        public ICollection<Team> Teams { get; set; }
+
+        public Fan()
+        {
+            this.Teams = new HashSet<Team>();
+        }
     }
 }
