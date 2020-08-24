@@ -34,8 +34,16 @@ namespace AllSports.Data
         public string Height { get; set; }
         [Required]
         public int Weight { get; set; }
-        public int? YearsWithTeam { get; set; }
+        public int? YearsWithTeam { get
+            {
+                TimeSpan span = DateTime.Now - DateSigned;
+                double lengthInYears = span.TotalDays / 365.25;
+                var years = Convert.ToInt32(Math.Floor(lengthInYears));
+                return years;
+            } }
+        public DateTime DateSigned { get; set;}
         public string College { get; set; }
+        public int Salary { get; set; }
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
         [ForeignKey(nameof(TeamId))]

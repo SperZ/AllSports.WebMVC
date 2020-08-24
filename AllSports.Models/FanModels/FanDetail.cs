@@ -18,5 +18,6 @@ namespace AllSports.Models.FanModels
         public StateAbbreviation State { get; set; }
         [Display(Name = "City")]
         public string CityName { get; set; }
+        public string UserName { get; set; }
     }
 }

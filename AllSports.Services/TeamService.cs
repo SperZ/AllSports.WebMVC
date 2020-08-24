@@ -29,10 +29,10 @@ namespace AllSports.Services
                     State = model.State,
                     TeamOwner = model.TeamOwner,
                     Wins = model.Wins,
-                    Losses = model.Losses
+                    Losses = model.Losses,
                 };
-               
-            using(var ctx = new ApplicationDbContext())
+
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Teams.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -41,7 +41,7 @@ namespace AllSports.Services
 
         public IEnumerable<TeamListItem> GetTeams()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var allTeams =
                     ctx
@@ -62,33 +62,33 @@ namespace AllSports.Services
             }
         }
 
-        public TeamDetail GetTeamById(int id)
+        public TeamDetail GetTeamById(int teamId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Teams
-                    .Single(e => e.TeamId == id);
+                    .Single(e => e.TeamId == teamId);
                 return
-                    new TeamDetail 
-                    { 
+                    new TeamDetail
+                    {
                         TeamName = entity.TeamName,
                         Wins = entity.Wins,
                         Losses = entity.Losses,
-                        WinPercentage=entity.WinPercentage,
+                        WinPercentage = entity.WinPercentage,
                         CityName = entity.CityName,
                         State = entity.State,
                         TeamOwner = entity.TeamOwner,
-                        LeagueName =entity.League.LeagueName
+                        CostOfTeam = GetAllPlayersSalary(teamId),
+                        LeagueName = entity.League.LeagueName
                     };
-
             }
         }
 
         public IEnumerable<League_TeamListItem> GetTeamsbyLeagueId(int LeagueId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var allteams =
                     ctx
@@ -100,24 +100,24 @@ namespace AllSports.Services
                         e =>
                         new League_TeamListItem
                         {
-                            TeamName=e.TeamName,
+                            TeamName = e.TeamName,
                             Wins = e.Wins,
-                            Losses=e.Losses,
-                            WinPercentage=e.WinPercentage,
+                            Losses = e.Losses,
+                            WinPercentage = e.WinPercentage,
                             CityName = e.CityName,
                             State = e.State
-                            
+
                         }
 
                         );
                 return allteams.ToArray();
 
-            }    
+            }
         }
 
-        public bool UpdateTeam(TeamEdit model) 
+        public bool UpdateTeam(TeamEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -130,6 +130,25 @@ namespace AllSports.Services
                 entity.TeamOwner = model.TeamOwner;
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public int GetAllPlayersSalary(int teamId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var team =
+                    ctx
+                    .Teams
+                    .Single(e => e.TeamId == teamId)
+                    .Players;
+                int total = 0;
+                foreach (var player in team)
+                {
+                    int salary = player.Salary;
+                    total += salary;
+                }
+                return total;
             }
         }
     }

@@ -18,6 +18,7 @@ namespace AllSports.Data
         public StateAbbreviation State { get; set; }
         [Required]
         public string CityName { get; set; }
+        public string UserName { get; set; }
         public ICollection<Team> Team { get; set; }
     }
 }
