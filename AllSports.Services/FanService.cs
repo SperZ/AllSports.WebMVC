@@ -29,6 +29,7 @@ namespace AllSports.Services
                     CityName = model.CityName,
                     UserName = _userName
                 };
+
             using(var ctx = new ApplicationDbContext())
             {
                 ctx.Fans.Add(entity);
@@ -55,7 +56,25 @@ namespace AllSports.Services
 
             }
         }
-
+        public IEnumerable<FanListItem> GetFans()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Fans
+                    .Where(e => e.UserName == _userName)
+                    .Select(e =>
+                  new FanListItem 
+                  {
+                      FanId = e.FanId,
+                      FirstName = e.FirstName,
+                      CityName = e.CityName,
+                  }
+                  );
+                return query.ToArray();
+            }
+        }
 
 
             public IEnumerable<FanListItem> GetFansByTeamId(int teamId)

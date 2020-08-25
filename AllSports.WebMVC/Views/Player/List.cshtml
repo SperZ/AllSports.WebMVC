@@ -1,10 +1,10 @@
-﻿@model IEnumerable<AllSports.Models.PlayerModels.PlayerListItem>
+﻿@model IEnumerable<AllSports.Models.PlayerModels.Team_PlayerListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List";
 }
 
-<h2>Index</h2>
+<h2>List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,6 +21,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.TeamId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PlayerId)
         </th>
         <th>
@@ -36,7 +39,10 @@
             @Html.DisplayNameFor(model => model.JerseyNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TeamName)
+            @Html.DisplayNameFor(model => model.YearsWithTeam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.College)
         </th>
         <th></th>
     </tr>
@@ -44,6 +50,9 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PlayerId)
             </td>
@@ -60,7 +69,10 @@
                 @Html.DisplayFor(modelItem => item.JerseyNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TeamName)
+                @Html.DisplayFor(modelItem => item.YearsWithTeam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.College)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

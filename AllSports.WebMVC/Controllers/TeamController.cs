@@ -23,7 +23,8 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult Index()
         {
             var service = CreateTeamService();
-            var model = service.GetTeams();
+            var list = service.GetTeams().ToList();
+            var model = list.OrderBy(e => e.TeamId);
             return View(model);
         }
 

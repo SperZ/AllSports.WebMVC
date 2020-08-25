@@ -82,9 +82,9 @@ namespace AllSports.Services
                         Height = player.Height,
                         Weight = player.Weight,
                         JerseyNumber = player.JerseyNumber,
-                        TeamName = player.Team.TeamName,
+                        TeamName = GetTeamName(id),
                         College = player.College,
-                        TwitterHandle = player.TwitterHandle,
+                        TwitterHandle = GetTwitterHandle(id),
                     };
             }
         }
@@ -136,6 +136,77 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
 
 
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Players
+                    .Single(e => e.PlayerId == id);
+                ctx.Players.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public string GetTeamName(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var team =
+                    ctx
+                    .Players
+                    .Single(e => e.PlayerId == id)
+                    .Team;
+
+                if (team == null)
+                {
+                    return "None.";
+                }
+
+                else
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var entity =
+                            context
+                            .Players
+                            .Single(e => e.PlayerId == id);
+
+                        return entity.Team.TeamName;
+                    };
+            }
+        }
+
+        public string GetTwitterHandle(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var player =
+                    ctx
+                    .Players
+                    .Single(e => e.PlayerId == id);
+
+
+
+                if (player.TwitterHandle == null)
+                {
+                    return "_";
+                }
+
+                else
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var entity =
+                            context
+                            .Players
+                            .Single(e => e.PlayerId == id);
+
+                        return entity.TwitterHandle;
+                    };
             }
         }
     }

@@ -253,11 +253,15 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
+    <Content Include="Views\Player\List.cshtml" />
+    <Content Include="Views\Fan\Create.cshtml" />
+    <Content Include="Views\Fan\Details.cshtml" />
+    <Content Include="Views\Fan\Index.cshtml" />
+    <Content Include="Views\Player\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Coach\" />
-    <Folder Include="Views\Fan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
