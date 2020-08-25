@@ -63,127 +63,86 @@ namespace AllSports.Data.Migrations
                  );
             context.SaveChanges();
 
-            context.Players.AddOrUpdate(x => x.PlayerId,
-                new Player()
-                {
-                    FirstName = "T.J.",
-                    LastName = "Warren",
-                    DateOfBirth = new DateTime(09 / 05 / 1993),
-                    JerseyNumber = 1,
-                    Height = "6' 8",
-                    Weight = 220,
-                    YearsWithTeam = 1,
-                    College = "North Carolina State",
-                    TwitterHandle = "https://twitter.com/TonyWarrenJr",
-                    TeamId = 1
-                },
-                new Player()
-                {
-                    FirstName = "Malcom",
-                    LastName = "Brogdon",
-                    DateOfBirth = new DateTime(09 / 05 / 1993),
-                    JerseyNumber = 7,
-                    Height = "6' 5",
-                    Weight = 229,
-                    YearsWithTeam = 1,
-                    College = "Virginia",
-                    TeamId = 1
-                },
-                new Player()
-                {
-                    FirstName = "Victor",
-                    LastName = "Oladipo",
-                    DateOfBirth = new DateTime(12 / 11 / 1992),
-                    JerseyNumber = 4,
-                    Height = "6' 4",
-                    Weight = 213,
-                    YearsWithTeam = 3,
-                    College = "Indiana",
-                    TwitterHandle = "https://twitter.com/VicOladipo",
-                    TeamId = 1
-                },
-                new Player()
-                {
-                    FirstName = "Domantas",
-                    LastName = "Sabonis",
-                    DateOfBirth = new DateTime(05 / 03 / 1996),
-                    JerseyNumber = 4,
-                    Height = "6' 11",
-                    Weight = 240,
-                    YearsWithTeam = 2,
-                    College = "Gonzaga",
-                    TwitterHandle = "https://twitter.com/Dsabonis11",
-                    TeamId = 1
-                },
-                new Player()
-                {
-                    FirstName = "Lebron",
-                    LastName = "James",
-                    DateOfBirth = new DateTime(12 / 30 / 1984),
-                    JerseyNumber = 23,
-                    Height = "6' 9",
-                    Weight = 250,
-                    YearsWithTeam = 2,
-                    TwitterHandle = "https://twitter.com/kingjames",
-                    TeamId = 2
-                },
-                new Player()
-                {
-                    FirstName = "Anthony",
-                    LastName = "Davis",
-                    DateOfBirth = new DateTime(12 / 30 / 1984),
-                    JerseyNumber = 23,
-                    Height = "6' 9",
-                    Weight = 250,
-                    YearsWithTeam = 2,
-                    TwitterHandle = "https://twitter.com/kingjames",
-                    TeamId = 2
-                },
-                 new Player()
-                 {
-                     FirstName = "Lebron",
-                     LastName = "James",
-                     DateOfBirth = new DateTime(12 / 30 / 1984),
-                     JerseyNumber = 23,
-                     Height = "6' 9",
-                     Weight = 250,
-                     YearsWithTeam = 2,
-                     TwitterHandle = "https://twitter.com/kingjames",
-                     TeamId = 2
-                 },
-                new Player()
-                {
-                    FirstName = "Lebron",
-                    LastName = "James",
-                    DateOfBirth = new DateTime(12 / 30 / 1984),
-                    JerseyNumber = 23,
-                    Height = "6' 9",
-                    Weight = 250,
-                    YearsWithTeam = 2,
-                    TwitterHandle = "https://twitter.com/kingjames",
-                    TeamId = 2
-                },
-                new Player()
-                {
-                    FirstName = "Lebron",
-                    LastName = "James",
-                    DateOfBirth = new DateTime(12 / 30 / 1984),
-                    JerseyNumber = 23,
-                    Height = "6' 9",
-                    Weight = 250,
-                    YearsWithTeam = 2,
-                    TwitterHandle = "https://twitter.com/kingjames",
-                    TeamId = 2
-                },
-
-
-
-
-
-
-
-                );
-
+            //context.Players.AddOrUpdate(x => x.PlayerId,
+            //    new Player()
+            //    {
+            //        FirstName = "T.J.",
+            //        LastName = "Warren",
+            //        DateOfBirth = new DateTime(09 / 05 / 1993),
+            //        JerseyNumber = 1,
+            //        Height = "6' 8",
+            //        Weight = 220,
+            //        YearsWithTeam = 1,
+            //        College = "North Carolina State",
+            //        TwitterHandle = "",
+            //        TeamId = 1
+            //    },
+            //    new Player()
+            //    {
+            //        PlayerId = 1,
+            //        FirstName = "Malcom",
+            //        LastName = "Brogdon",
+            //        DateOfBirth = new DateTime(09 / 05 / 1993),
+            //        JerseyNumber = 7,
+            //        Height = "6' 5",
+            //        Weight = 229,
+            //        YearsWithTeam = 1,
+            //        College = "Virginia",
+            //        TwitterHandle = "None",
+            //        TeamId = 1
+            //    }
+            //    new Player()
+            //    {
+            //        FirstName = "Victor",
+            //        LastName = "Oladipo",
+            //        DateOfBirth = new DateTime(12 / 11 / 1992),
+            //        JerseyNumber = 4,
+            //        Height = "6' 4",
+            //        Weight = 213,
+            //        YearsWithTeam = 3,
+            //        College = "Indiana",
+            //        //TwitterHandle = "",
+            //        TeamId = 1
+            //    },
+            //    new Player()
+            //    {
+            //        FirstName = "Domantas",
+            //        LastName = "Sabonis",
+            //        DateOfBirth = new DateTime(05 / 03 / 1996),
+            //        JerseyNumber = 4,
+            //        Height = "6' 11",
+            //        Weight = 240,
+            //        YearsWithTeam = 2,
+            //        College = "Gonzaga",
+            //        //TwitterHandle = "",
+            //        TeamId = 1
+            //    },
+            //    new Player()
+            //    {
+            //        FirstName = "Lebron",
+            //        LastName = "James",
+            //        DateOfBirth = new DateTime(12 / 30 / 1984),
+            //        JerseyNumber = 23,
+            //        Height = "6' 9",
+            //        Weight = 250,
+            //        YearsWithTeam = 2,
+            //        //TwitterHandle = "",
+            //        TeamId = 2
+            //    },
+            //    new Player()
+            //    {
+            //        FirstName = "Anthony",
+            //        LastName = "Davis",
+            //        DateOfBirth = new DateTime(12 / 30 / 1984),
+            //        JerseyNumber = 23,
+            //        Height = "6' 9",
+            //        Weight = 250,
+            //        YearsWithTeam = 2,
+            //        //TwitterHandle = "",
+            //        TeamId = 2
+            //    }
+            //    );
+            //context.SaveChanges();
 
 
 

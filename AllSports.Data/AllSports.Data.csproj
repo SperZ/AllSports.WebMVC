@@ -61,6 +61,10 @@
     <Compile Include="IPerson.cs" />
     <Compile Include="ILocation.cs" />
     <Compile Include="League.cs" />
+    <Compile Include="Migrations\202008251325450_InitialMigration.cs" />
+    <Compile Include="Migrations\202008251325450_InitialMigration.Designer.cs">
+      <DependentUpon>202008251325450_InitialMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +74,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008251325450_InitialMigration.resx">
+      <DependentUpon>202008251325450_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

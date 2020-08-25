@@ -36,7 +36,7 @@ namespace AllSports.Data
         public int Weight { get; set; }
         public int? YearsWithTeam { get; set; }
         public string College { get; set; }
-        public int Salary { get; set; }
+        //public int Salary { get; set; }
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
         [ForeignKey(nameof(TeamId))]

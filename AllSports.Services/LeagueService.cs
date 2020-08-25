@@ -16,7 +16,7 @@ namespace AllSports.Services
             _userName = userName;
         }
 
-        public bool Create(LeagueCreate model)
+        public bool CreateLeague(LeagueCreate model)
         {
             var entity =
                 new League()

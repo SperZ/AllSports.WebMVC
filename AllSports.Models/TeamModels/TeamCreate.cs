@@ -21,8 +21,6 @@ namespace AllSports.Models.TeamModels
         [Required]
         [Display(Name = "State")]
         public StateAbbreviation State { get; set; }
-        [Display(Name = "Owner")]
-        public string TeamOwner { get; set; }
         public int LeagueId { get; set; }
     }
 }

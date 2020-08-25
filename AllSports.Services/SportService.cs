@@ -18,7 +18,7 @@ namespace AllSports.Services
             _userName = userName;
         }
 
-        public bool Create(SportCreate model)
+        public bool CreateSport(SportCreate model)
         {
             var entity =
                 new Sport() 
@@ -45,7 +45,8 @@ namespace AllSports.Services
                         e =>
                         new SportListItem{ 
                             SportId = e.SportId,
-                            SportName = e.SportName
+                            SportName = e.SportName,
+                            YearInvented = e.YearInvented
                         }
 
                         );
@@ -61,14 +62,12 @@ namespace AllSports.Services
                     ctx
                     .Sports
                     .Single(e => e.SportId == id);
-                return 
-                    new SportDetail 
-                    { 
-                     SportName = entity.SportName,
-                     YearInvented = entity.YearInvented,
-                     Description = entity.Description
-                     };
-
+                return
+                    new SportDetail { 
+                        SportName=entity.SportName,
+                        YearInvented =entity.YearInvented,
+                        Description= entity.Description
+                    };
             }
         }
     }

@@ -17,7 +17,7 @@ namespace AllSports.Services
             _userName = userName;
         }
 
-        public bool Create(PlayerCreate model)
+        public bool CreatePlayer(PlayerCreate model)
         {
             var player =
                 new Player()
@@ -54,7 +54,6 @@ namespace AllSports.Services
                             PlayerId = e.PlayerId,
                             FirstName = e.FirstName,
                             LastName = e.LastName,
-                            Age = e.Age,
                             TeamName = e.Team.TeamName,
                             JerseyNumber = e.JerseyNumber,
 
@@ -84,7 +83,6 @@ namespace AllSports.Services
                         Weight = player.Weight,
                         JerseyNumber = player.JerseyNumber,
                         TeamName = player.Team.TeamName,
-
                         College = player.College,
                         TwitterHandle = player.TwitterHandle,
                     };

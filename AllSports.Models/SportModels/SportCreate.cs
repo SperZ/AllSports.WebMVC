@@ -13,6 +13,9 @@ namespace AllSports.Models.SportModels
         [Display(Name = "Sport")]
         public string SportName { get; set; }
         [Required]
+        [Display(Name = "Year Invented")]
+        public int YearInvented { get; set; }
+        [Required]
         public string Description { get; set; }
     }
 }

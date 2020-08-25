@@ -12,7 +12,6 @@ namespace AllSports.Models.LeagueModels
         public int LeagueId { get; set; }
         public string LeagueName { get; set; }
         public int NumberOfTeams { get; set; }
-        public string Commisioner { get; set; }
         public string BaseCountry { get; set; }
     }
 }

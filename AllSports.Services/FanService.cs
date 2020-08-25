@@ -18,7 +18,7 @@ namespace AllSports.Services
         {
             _userName = userName;
         }
-        public bool Create(FanCreate model)
+        public bool CreateFan(FanCreate model)
         {
             var entity =
                 new Fan()

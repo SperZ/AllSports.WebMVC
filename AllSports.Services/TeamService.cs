@@ -18,7 +18,7 @@ namespace AllSports.Services
             _userName = userName;
         }
 
-        public bool Create(TeamCreate model)
+        public bool CreateTeam(TeamCreate model)
         {
             var entity =
                 new Team()
@@ -27,7 +27,6 @@ namespace AllSports.Services
                     TeamName = model.TeamName,
                     CityName = model.CityName,
                     State = model.State,
-                    TeamOwner = model.TeamOwner,
                     Wins = model.Wins,
                     Losses = model.Losses,
                 };
@@ -76,11 +75,9 @@ namespace AllSports.Services
                         TeamName = entity.TeamName,
                         Wins = entity.Wins,
                         Losses = entity.Losses,
-                        WinPercentage = entity.WinPercentage,
                         CityName = entity.CityName,
                         State = entity.State,
-                        TeamOwner = entity.TeamOwner,
-                        CostOfTeam = GetAllPlayersSalary(teamId),
+                        //CostOfTeam = GetAllPlayersSalary(teamId),
                         LeagueName = entity.League.LeagueName
                     };
             }
@@ -103,7 +100,6 @@ namespace AllSports.Services
                             TeamName = e.TeamName,
                             Wins = e.Wins,
                             Losses = e.Losses,
-                            WinPercentage = e.WinPercentage,
                             CityName = e.CityName,
                             State = e.State
 
@@ -127,29 +123,28 @@ namespace AllSports.Services
                 entity.Losses = model.Losses;
                 entity.CityName = model.CityName;
                 entity.State = model.State;
-                entity.TeamOwner = model.TeamOwner;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public int GetAllPlayersSalary(int teamId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var team =
-                    ctx
-                    .Teams
-                    .Single(e => e.TeamId == teamId)
-                    .Players;
-                int total = 0;
-                foreach (var player in team)
-                {
-                    int salary = player.Salary;
-                    total += salary;
-                }
-                return total;
-            }
-        }
+        //public int GetAllPlayersSalary(int teamId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var team =
+        //            ctx
+        //            .Teams
+        //            .Single(e => e.TeamId == teamId)
+        //            .Players;
+        //        int total = 0;
+        //        foreach (var player in team)
+        //        {
+        //            int salary = player.Salary;
+        //            total += salary;
+        //        }
+        //        return total;
+        //    }
+        //}
     }
 }

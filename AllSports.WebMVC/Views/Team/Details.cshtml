@@ -1,0 +1,72 @@
+﻿@model AllSports.Models.TeamModels.TeamDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TeamDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Losses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Losses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WinPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WinPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeagueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeagueName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
