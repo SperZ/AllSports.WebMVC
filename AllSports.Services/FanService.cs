@@ -113,7 +113,8 @@ namespace AllSports.Services
                        FirstName = entity.FirstName,
                        LastName = entity.LastName,
                        State = entity.State,
-                       CityName = entity.CityName
+                       CityName = entity.CityName,
+                       UserName = entity.UserName
                    };
             }
         }

@@ -146,5 +146,19 @@ namespace AllSports.Services
         //        return total;
         //    }
         //}
+
+        public bool Delete(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Teams
+                    .Single(e => e.TeamId == id);
+
+                ctx.Teams.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

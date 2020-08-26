@@ -121,5 +121,19 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool Delete(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Coaches
+                    .Single(e => e.CoachId == id);
+
+                ctx.Coaches.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

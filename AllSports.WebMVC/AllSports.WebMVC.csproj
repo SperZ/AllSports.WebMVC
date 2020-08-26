@@ -250,18 +250,21 @@
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
-    <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
-    <Content Include="Views\Player\List.cshtml" />
     <Content Include="Views\Fan\Create.cshtml" />
     <Content Include="Views\Fan\Details.cshtml" />
     <Content Include="Views\Fan\Index.cshtml" />
     <Content Include="Views\Player\Delete.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Player\List.cshtml" />
+    <Content Include="Views\Fan\Delete.cshtml" />
+    <Content Include="Views\League\Delete.cshtml" />
+    <Content Include="Views\Coach\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Coach\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

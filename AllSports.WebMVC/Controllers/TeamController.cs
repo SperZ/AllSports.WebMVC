@@ -59,5 +59,27 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var service = CreateTeamService();
+            var model = service.GetTeamById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult DeleteTeam(int id)
+        {
+            var service = CreateTeamService();
+            service.Delete(id);
+            var model = service.GetTeamById(id);
+            TempData["SaveResult"] = $"{model.LeagueName} has been deleted.";
+
+            return RedirectToAction("Index");
+        }
     }
 }

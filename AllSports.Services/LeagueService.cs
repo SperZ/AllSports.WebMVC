@@ -87,5 +87,19 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool Delete(int id)
+        {
+            using( var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Leagues
+                    .Single(e => e.LeagueId == id);
+
+                ctx.Leagues.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

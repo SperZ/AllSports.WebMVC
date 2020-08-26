@@ -83,8 +83,8 @@ namespace AllSports.WebMVC.Controllers
             var service = CreatePlayerService();
 
             service.Delete(id);
-
-            TempData["SaveResult"] = "The player has been deleted.";
+            var model = service.GetPlayerById(id);
+            TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been deleted.";
 
             return RedirectToAction("Index");
 

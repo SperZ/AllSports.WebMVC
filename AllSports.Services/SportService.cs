@@ -24,6 +24,7 @@ namespace AllSports.Services
                 new Sport() 
                 { 
                     SportName = model.SportName,
+                    YearInvented = model.YearInvented,
                     Description = model.Description
                 };
 
@@ -68,6 +69,20 @@ namespace AllSports.Services
                         YearInvented =entity.YearInvented,
                         Description= entity.Description
                     };
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Sports
+                    .Single(e => e.SportId == id);
+
+                ctx.Sports.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

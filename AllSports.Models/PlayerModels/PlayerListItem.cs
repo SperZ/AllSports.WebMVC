@@ -15,7 +15,6 @@ namespace AllSports.Models.PlayerModels
         public string FirstName { get; set; }
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
-        public int Age { get; set; }
         [Display(Name = "Jersey Number")]
         public int? JerseyNumber { get; set; }
         [Display(Name = "Team")]
