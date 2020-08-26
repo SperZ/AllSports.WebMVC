@@ -1,10 +1,10 @@
-﻿@model IEnumerable<AllSports.Models.CoachModels.CoachListItem>
+﻿@model IEnumerable<AllSports.Models.CoachModels.Team_CoachListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CoachList";
 }
 
-<h2>Index</h2>
+<h2>CoachList</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearsWithTeam)
         </th>
         <th></th>
     </tr>
@@ -35,9 +38,12 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CoachId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CoachId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CoachId })
+            @Html.DisplayFor(modelItem => item.YearsWithTeam)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

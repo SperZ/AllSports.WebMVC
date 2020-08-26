@@ -83,7 +83,7 @@ namespace AllSports.Services
             }
         }
 
-        public IEnumerable<League_TeamListItem> GetTeamsbyLeagueId(int LeagueId)
+        public IEnumerable<League_TeamListItem> GetTeamsbyLeagueId(int LeagueId)// not added to controller
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -111,7 +111,7 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdateTeam(TeamEdit model)
+        public bool UpdateTeam(TeamEdit model) // not added to controller
         {
             using (var ctx = new ApplicationDbContext())
             {

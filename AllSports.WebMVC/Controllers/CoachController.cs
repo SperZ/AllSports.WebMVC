@@ -18,6 +18,7 @@ namespace AllSports.WebMVC.Controllers
 
             return service;
         }
+
         // GET: Coach
         public ActionResult Index()
         {
@@ -31,27 +32,34 @@ namespace AllSports.WebMVC.Controllers
             return View();
         }
 
-        public ActionResult CreateCoach(CoachCreate model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CoachCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateCoachService();
 
-            if (service.Create(model))
+            if (service.CreateCoach(model))
             {
-                TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been created";
+                TempData["SaveResult"] = $"{model.FirstName} {model.LastName} was created.";
                 return RedirectToAction("Index");
-            }
-
-            ModelState.AddModelError("", $"{model.FirstName} {model.LastName} was not created.");
+            };
+            ModelState.AddModelError("", $"{model.FirstName} {model.LastName} could not be created.");
 
             return View(model);
         }
-
         public ActionResult Details(int id)
         {
             var service = CreateCoachService();
             var model = service.GetCoachById(id);
+            return View(model);
+        }
+
+        public ActionResult CoachList(int teamId)
+        {
+            var service = CreateCoachService();
+            var model = service.GetCoachesbyTeamId(teamId);
             return View(model);
         }
 
@@ -62,6 +70,9 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteCoach(int id)
         {
             var service = CreateCoachService();

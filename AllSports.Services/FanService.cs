@@ -36,14 +36,14 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectFanToTeam(int fanId, OnlyTeamId model)
+        public bool ConnectFanToTeam(OnlyTeamId model)// not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {
                 var fan =
                     ctx
                     .Fans
-                    .Single(e => e.FanId == fanId && e.UserName == _userName);
+                    .Single(e => e.UserName == _userName);
 
                 var team =
                     ctx
@@ -77,7 +77,7 @@ namespace AllSports.Services
         }
 
 
-            public IEnumerable<FanListItem> GetFansByTeamId(int teamId)
+            public IEnumerable<FanListItem> GetFansByTeamId(int teamId)// not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -119,7 +119,7 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdatFan(FanEdit model) 
+        public bool UpdatFan(FanEdit model) // not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {

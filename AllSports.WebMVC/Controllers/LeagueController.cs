@@ -71,8 +71,8 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult DeleteLeague(int id)
         {
             var service = CreateLeagueService();
-            service.Delete(id);
             var model = service.GetLeagueById(id);
+            service.Delete(id);
             TempData["SaveResult"] = $"{model.LeagueName} has been deleted.";
 
             return RedirectToAction("Index");

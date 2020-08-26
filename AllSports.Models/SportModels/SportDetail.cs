@@ -9,7 +9,6 @@ namespace AllSports.Models.SportModels
 {
     public class SportDetail
     {
-        public int SportId { get; set; }
         [Display(Name = "Sport")]
         public string SportName { get; set; }
         [Display(Name = "Year Invented")]

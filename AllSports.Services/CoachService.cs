@@ -18,7 +18,7 @@ namespace AllSports.Services
             _userName = userName;
         }
 
-        public bool Create(CoachCreate model)
+        public bool CreateCoach(CoachCreate model)
         {
             var coach =
                 new Coach()
@@ -104,7 +104,7 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdateCoach(CoachEdit model)
+        public bool UpdateCoach(CoachEdit model) // not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {

@@ -9,6 +9,7 @@ namespace AllSports.Models.CoachModels
 {
     public class CoachListItem
     {
+        [Display(Name = "Id")]
         public int CoachId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

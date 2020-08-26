@@ -9,6 +9,7 @@ namespace AllSports.Models.PlayerModels
 {
     public class PlayerListItem
     {
+        [Display(Name = "Id")]
         public int PlayerId { get; set; }
         [Required]
         [Display(Name = "First Name")]

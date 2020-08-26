@@ -1,4 +1,5 @@
 ﻿using AllSports.Models.FanModels;
+using AllSports.Models.TeamModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -50,7 +51,32 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+        public ActionResult ConnectFanWithTeam()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        [ActionName("ConnectFanToTeam")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConnectFanToTeam(OnlyTeamId model)
+        {
+            if (ModelState.IsValid) return View(model);
+
+            var service = CreateFanService();
+            
+            
+            if (service.ConnectFanToTeam(model))
+            {
+                TempData["SaveResult"] = $"You are now a fan of {model.TeamId}";
+                return RedirectToAction("Index");
+            }
+
+           ModelState.AddModelError("", "The model could not be connected.");
+
+            return View(model);
+        }
         public ActionResult Details(int id)
         {
             var service = CreateFanService();
@@ -73,9 +99,8 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult DeleteTeam(int id)
         {
             var service = CreateFanService();
-
-            service.Delete(id);
             var model = service.GetFanbyId(id);
+            service.Delete(id);
             TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been deleted.";
 
             return RedirectToAction("Index");

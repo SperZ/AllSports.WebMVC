@@ -117,7 +117,7 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdatePlayer(PlayerEdit model)
+        public bool UpdatePlayer(PlayerEdit model) // not added to controller
         {
             using (var ctx = new ApplicationDbContext())
             {

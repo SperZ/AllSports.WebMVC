@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,16 @@ namespace AllSports.Models.LeagueModels
     public class League_TeamListItem
     {
         public int LeagueId { get; set; }
+        [Display(Name = "Team Name")]
         public string TeamName { get; set; }
+        [Display(Name = "City")]
         public string CityName { get; set; }
         public StateAbbreviation State { get; set; }
         [DefaultValue(0)]
         public int Wins { get; set; }
         [DefaultValue(0)]
         public int Losses { get; set; }
+        [Display(Name = "Win Percentage")]
         public decimal? WinPercentage { get; set; }
     }
 }

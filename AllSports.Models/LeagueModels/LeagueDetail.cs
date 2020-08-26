@@ -11,6 +11,7 @@ namespace AllSports.Models.LeagueModels
     {
         [Display(Name = "League")]
         public string LeagueName { get; set; }
+        [Display(Name = "Number Of Teams")]
         public int NumberOfTeams { get; set; }
         [Display(Name = "Year of Inception")]
         public int LeagueInception { get; set; }

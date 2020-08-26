@@ -9,6 +9,7 @@ namespace AllSports.Models.SportModels
 {
     public class SportListItem
     {
+        [Display(Name ="Id")]
         public int SportId { get; set; }
         [Display(Name = "Sport")]
         public string SportName { get; set; }

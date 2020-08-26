@@ -262,6 +262,11 @@
     <Content Include="Views\Fan\Delete.cshtml" />
     <Content Include="Views\League\Delete.cshtml" />
     <Content Include="Views\Coach\Index.cshtml" />
+    <Content Include="Views\Coach\Create.cshtml" />
+    <Content Include="Views\Coach\Details.cshtml" />
+    <Content Include="Views\Coach\Delete.cshtml" />
+    <Content Include="Views\Coach\CoachList.cshtml" />
+    <Content Include="Views\Fan\ConnectFanWithTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

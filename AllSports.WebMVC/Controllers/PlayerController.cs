@@ -58,6 +58,7 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpGet, Route("Coach/CoachList/?teamId={id}")]
         public ActionResult List(int teamId) // view not working
         {
             var service = CreatePlayerService();
@@ -81,9 +82,9 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult DeletePlayer(int id)
         {
             var service = CreatePlayerService();
-
-            service.Delete(id);
             var model = service.GetPlayerById(id);
+            service.Delete(id);
+            
             TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been deleted.";
 
             return RedirectToAction("Index");
