@@ -10,6 +10,7 @@ namespace AllSports.Models.TeamModels
 {
     public class TeamDetail
     {
+        public int TeamId { get; set; }
         [Display(Name = "Team Name")]   
         public string TeamName { get; set; }
         public int Wins { get; set; }

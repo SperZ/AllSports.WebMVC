@@ -10,6 +10,7 @@ namespace AllSports.Models.FanModels
 {
    public class FanDetail
     {
+        public int FanId { get; set; }
         [Display(Name = "First Name" )]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]

@@ -75,6 +75,7 @@ namespace AllSports.Services
                 return
                     new PlayerDetail()
                     {
+                        PlayerId = player.PlayerId,
                         FirstName = player.FirstName,
                         LastName = player.LastName,
                         Age = player.Age,
@@ -125,9 +126,10 @@ namespace AllSports.Services
                     ctx
                     .Players
                     .Single(e => e.PlayerId == model.PlayerId);
+
                 updates.FirstName = model.FirstName;
                 updates.LastName = model.LastName;
-                updates.DateOfBirth = model.DateOfBirth;
+                updates.Weight = model.Weight;
                 updates.Height = model.Height;
                 updates.JerseyNumber = model.JerseyNumber;
                 updates.TeamId = model.TeamId;

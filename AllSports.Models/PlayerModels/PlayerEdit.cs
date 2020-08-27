@@ -11,11 +11,10 @@ namespace AllSports.Models.PlayerModels
         public int PlayerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
         public int? JerseyNumber { get; set; }
         public string Height { get; set; }
+        public int Weight { get; set; }
         public int? YearsWithTeam { get; set; }
-        public string College { get; set; }
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
     }

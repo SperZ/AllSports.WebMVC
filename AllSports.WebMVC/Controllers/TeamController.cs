@@ -60,6 +60,42 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateTeamService();
+            var detail = service.GetTeamById(id);
+            var model =
+                new TeamEdit
+                {
+                    TeamId = detail.TeamId,
+                    TeamName = detail.TeamName,
+                    Wins = detail.Wins,
+                    Losses = detail.Losses,
+                    CityName = detail.CityName,
+                    State = detail.State
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateTeam(TeamEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateTeamService();
+
+            if (service.UpdateTeam(model))
+            {
+                TempData["SaveResult"] = $"The {model.TeamName} was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", $"Unable to update the {model.TeamName}");
+            return View(model);
+        }
+
         public ActionResult Delete(int id)
         {
             var service = CreateTeamService();

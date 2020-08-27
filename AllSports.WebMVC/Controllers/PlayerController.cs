@@ -58,13 +58,58 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpGet, Route("Coach/CoachList/?teamId={id}")]
-        public ActionResult List(int teamId) // view not working
+        [HttpGet, Route("Player/List/?teamId={id}")]
+        public ActionResult List(int teamId)
         {
             var service = CreatePlayerService();
             var model = service.GetPlayersbyTeamId(teamId);
             return View(model);
         }
+        public ActionResult Edit(int id)
+        {
+            var service = CreatePlayerService();
+            var detail = service.GetPlayerById(id);
+            var model =
+                new PlayerEdit 
+                {
+                    PlayerId =detail.PlayerId,
+                    FirstName=detail.FirstName,
+                    LastName= detail.LastName,
+                    JerseyNumber = detail.JerseyNumber,
+                    Height = detail.Height,
+                    Weight=detail.Weight,
+                    YearsWithTeam = detail.YearsWithTeam,
+                    TwitterHandle = detail.TwitterHandle,
+                    TeamId = detail.TeamId
+                };
+
+            return View(model);
+        } 
+
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, PlayerEdit model) 
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.PlayerId != id)
+            {
+                ModelState.AddModelError("", "Id mismatch");
+                return View(model);
+            }
+
+            var service = CreatePlayerService();
+            if (service.UpdatePlayer(model))
+            {
+                TempData["SaveResult"] = $"{model.FirstName} {model.LastName}s' information has been updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", $"Unable to update {model.FirstName} {model.LastName}s' information.");
+            return View();
+        }
+
 
         
         public ActionResult Delete(int id)

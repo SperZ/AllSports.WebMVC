@@ -1,4 +1,4 @@
-﻿@model AllSports.Models.TeamModels.OnlyTeamId
+﻿@model AllSports.Models.FanModels.ConnectFan
 
 @{
     ViewBag.Title = "ConnectFanWithTeam";
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>OnlyTeamId</h4>
+        <h4>ConnectFan</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

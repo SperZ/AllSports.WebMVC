@@ -72,6 +72,7 @@ namespace AllSports.Services
                 return
                     new TeamDetail
                     {
+                        TeamId = entity.TeamId,
                         TeamName = entity.TeamName,
                         Wins = entity.Wins,
                         Losses = entity.Losses,
@@ -119,6 +120,7 @@ namespace AllSports.Services
                     ctx
                     .Teams
                     .Single(e => e.TeamId == model.TeamId);
+                entity.TeamName = model.TeamName;
                 entity.Wins = model.Wins;
                 entity.Losses = model.Losses;
                 entity.CityName = model.CityName;

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Models.TeamModels
+namespace AllSports.Models.FanModels
 {
-    public class OnlyTeamId
+    public class ConnectFan
     {
         public int TeamId { get; set; }
-
     }
 }

@@ -63,6 +63,49 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateCoachService();
+            var detail = service.GetCoachById(id);
+            var model =
+                new CoachEdit
+                {
+                    CoachId = detail.CoachId,
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName,
+                    YearsWithTeam = detail.YearsWithTeam,
+                    CoachPosition = detail.CoachPosition,
+                    TeamId = detail.TeamId
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CoachEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.CoachId != id)
+            {
+                ModelState.AddModelError("", "Id mismatch");
+                return View(model);
+            }
+
+            var service = CreateCoachService();
+            if (service.UpdateCoach(model))
+            {
+                TempData["SaveResult"] = $"{model.FirstName} {model.LastName}s' information has been updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", $"Unable to update {model.FirstName} {model.LastName}s' information.");
+            return View();
+        }
+
+
         public ActionResult Delete(int id)
         {
             var service = CreateCoachService();

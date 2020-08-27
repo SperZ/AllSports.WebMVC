@@ -65,6 +65,7 @@ namespace AllSports.Services
                 return
                     new LeagueDetail
                     {
+                        LeagueId = entity.LeagueId,
                         LeagueName = entity.LeagueName,
                         LeagueInception = entity.LeagueInception,
                         NumberOfTeams = entity.NumberOfTeams,

@@ -36,7 +36,7 @@ namespace AllSports.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectFanToTeam(OnlyTeamId model)// not added to controller
+        public bool ConnectFanToTeam(ConnectFan model)// not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {
@@ -50,6 +50,7 @@ namespace AllSports.Services
                     .Teams
                     .Single(e => e.TeamId == model.TeamId);
 
+                team.Fans.Add(fan);
                 fan.Teams.Add(team);
 
                 return ctx.SaveChanges() == 1;
@@ -63,7 +64,6 @@ namespace AllSports.Services
                 var query =
                     ctx
                     .Fans
-                    .Where(e => e.UserName == _userName)
                     .Select(e =>
                   new FanListItem 
                   {
@@ -106,10 +106,11 @@ namespace AllSports.Services
                 var entity =
                     ctx
                     .Fans
-                    .Single(e => e.FanId == id && e.UserName == _userName);
+                    .Single(e => e.FanId == id);
                 return
                    new FanDetail()
                    {
+                       FanId = entity.FanId,
                        FirstName = entity.FirstName,
                        LastName = entity.LastName,
                        State = entity.State,
@@ -119,14 +120,14 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdatFan(FanEdit model) // not added to controller
+        public bool UpdateFan(FanEdit model) // not added to controller
         {
             using(var ctx = new ApplicationDbContext())
             {
                 var updates =
                     ctx
                     .Fans
-                    .Single(e => e.FanId == model.FanId);
+                    .Single(e => e.UserName == _userName || e.FanId == model.FanId);
                 updates.FirstName = model.FirstName;
                 updates.LastName = model.LastName;
                 updates.CityName = model.CityName;

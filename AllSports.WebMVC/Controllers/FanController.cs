@@ -1,4 +1,5 @@
-﻿using AllSports.Models.FanModels;
+﻿using AllSports.Data;
+using AllSports.Models.FanModels;
 using AllSports.Models.TeamModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
@@ -51,32 +52,40 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+
         public ActionResult ConnectFanWithTeam()
         {
             return View();
         }
 
-
         [HttpPost]
-        [ActionName("ConnectFanToTeam")]
+        [ActionName("ConnectFanWithTeam")]// this must match the name of the method that returns the view
         [ValidateAntiForgeryToken]
-        public ActionResult ConnectFanToTeam(OnlyTeamId model)
+        public ActionResult ConnectFanWithTeam(ConnectFan model)
         {
-            if (ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
             var service = CreateFanService();
-            
-            
+
+
             if (service.ConnectFanToTeam(model))
             {
                 TempData["SaveResult"] = $"You are now a fan of {model.TeamId}";
                 return RedirectToAction("Index");
             }
 
-           ModelState.AddModelError("", "The model could not be connected.");
+            ModelState.AddModelError("", "The model could not be connected.");
 
             return View(model);
         }
+
+        public ActionResult FanList(int teamId)
+        {
+            var service = CreateFanService();
+            var model = service.GetFansByTeamId(teamId);
+            return View(model);
+        }
+
         public ActionResult Details(int id)
         {
             var service = CreateFanService();
@@ -84,6 +93,42 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model)
 ;
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var service = CreateFanService();
+            var details = service.GetFanbyId(id);
+            var model =
+                new FanEdit
+                {
+                    FanId = details.FanId,
+                    FirstName = details.FirstName,
+                    LastName = details.LastName,
+                    CityName = details.CityName,
+                    State = details.State
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateFan(int id, FanEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateFanService();
+            if (service.UpdateFan(model))
+            {
+                TempData["SaveResult"] = $"{model.FirstName} {model.LastName}s' information has been updated.";
+                return View("Index");
+            }
+
+            ModelState.AddModelError("", $"Unable to update {model.FirstName} {model.LastName}s' information.");
+
+            return View(model);
         }
 
         public ActionResult Delete(int id)

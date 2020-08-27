@@ -17,7 +17,6 @@ namespace AllSports.Models.CoachModels
         public string LastName { get; set; }
         [Display(Name ="Years with Team")]
         public int? YearsWithTeam { get; set; }
-        public string College { get; set; }
         [Display(Name= "Coaching Position")]
         public TypeOfCoach CoachPosition { get; set; }
         public int? TeamId { get; set; }

@@ -10,6 +10,7 @@ namespace AllSports.Models.CoachModels
 {
    public  class CoachDetail
     {
+        public int CoachId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]

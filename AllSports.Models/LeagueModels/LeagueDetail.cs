@@ -9,6 +9,7 @@ namespace AllSports.Models.LeagueModels
 {
     public class LeagueDetail
     {
+        public int LeagueId { get; set; }
         [Display(Name = "League")]
         public string LeagueName { get; set; }
         [Display(Name = "Number Of Teams")]

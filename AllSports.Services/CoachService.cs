@@ -94,6 +94,7 @@ namespace AllSports.Services
                 return
                     new CoachDetail()
                     {
+                        CoachId = coach.CoachId,
                         FirstName = coach.FirstName,
                         LastName = coach.LastName,
                         TeamName = coach.Team.TeamName,

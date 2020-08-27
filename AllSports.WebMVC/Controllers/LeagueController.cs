@@ -58,6 +58,41 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateLeagueService();
+            var detail = service.GetLeagueById(id);
+            var model =
+                new LeagueEdit
+                {
+                    LeagueId = detail.LeagueId,
+                    LeagueName = detail.LeagueName,
+                    NumberOfTeams = detail.NumberOfTeams,
+                    BaseCountry = detail.BaseCountry,
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateLeague(int id, LeagueEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateLeagueService();
+
+            if (service.UpdateLeague(model))
+            {
+                TempData["SaveResult"] = $"{model.LeagueName} was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", $"Unable to update {model.LeagueName}");
+
+            return View(model);
+        }
+
         public ActionResult Delete(int id)
         {
             var service = CreateLeagueService();
