@@ -22,10 +22,34 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 500px;
     color:black;
 }
 
 a{
     color:antiquewhite;
+}
+
+.jumbotron{
+    background-color:black;
+}
+.jumbotron a.btn:hover{
+    color: darkblue;
+}
+
+.btn{
+    background-color: black;
+}
+
+a.btn{
+    color: white;
+}
+
+a.btn:hover{
+    background-color: gold;
+    color: darkblue;
+}
+
+input.btn{
+    color: white;
 }

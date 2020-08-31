@@ -274,6 +274,7 @@
     <Content Include="Views\Fan\Create.cshtml" />
     <Content Include="Views\Fan\ConnectFanWithTeam.cshtml" />
     <Content Include="Views\Team\TeamList.cshtml" />
+    <Content Include="Views\Team\GetTeamsByLeague.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

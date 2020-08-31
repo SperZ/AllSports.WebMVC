@@ -57,7 +57,7 @@ namespace AllSports.Services
                         }
 
                         );
-                return allTeams.ToArray().OrderBy(e => e.TeamName);
+                return allTeams.ToArray().OrderBy(e => e.TeamId);
             }
         }
 
@@ -91,7 +91,7 @@ namespace AllSports.Services
             }
         }
 
-        public IEnumerable<League_TeamListItem> GetTeamsbyLeagueId(int LeagueId)// not added to controller
+        public IEnumerable<League_Team_ListItem> GetTeamsbyLeagueId(int LeagueId)// not added to controller
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -103,18 +103,18 @@ namespace AllSports.Services
                     .Select
                     (
                         e =>
-                        new League_TeamListItem
+                        new League_Team_ListItem
                         {
+                            TeamId = e.TeamId,
                             TeamName = e.TeamName,
                             Wins = e.Wins,
                             Losses = e.Losses,
                             CityName = e.CityName,
                             State = e.State
-
                         }
 
                         );
-                return allteams.ToArray();
+                return allteams.ToArray().OrderBy(e => e.TeamName);
 
             }
         }

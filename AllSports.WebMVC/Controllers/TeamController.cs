@@ -33,11 +33,11 @@ namespace AllSports.WebMVC.Controllers
 
             List<League> Leagues = (new LeagueService(username)).GetLeaguesData().ToList();
             var query = from l in Leagues
-                        select new SelectListItem() 
-                        { Value= l.LeagueId.ToString(),
-                        Text = l.LeagueName
+                        select new SelectListItem()
+                        { Value = l.LeagueId.ToString(),
+                            Text = l.LeagueName
                         };
-            ViewBag.LeagueId=query.ToList();
+            ViewBag.LeagueId = query.ToList();
 
             return View();
         }
@@ -60,6 +60,16 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+
+        [HttpGet, Route("Team/GetTeamsByLeague/id")]
+        public ActionResult GetTeamsByLeague(int id)
+        {
+            var service = CreateTeamService();
+            var model = service.GetTeamsbyLeagueId(id);
+            return View(model);
+
+        }
+
 
         [HttpGet, Route("Team/TeamList/id")]
         public ActionResult TeamList(int id)

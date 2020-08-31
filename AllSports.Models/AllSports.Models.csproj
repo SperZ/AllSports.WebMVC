@@ -69,7 +69,6 @@
     <Compile Include="LeagueModels\LeagueEdit.cs" />
     <Compile Include="LeagueModels\LeagueListItem.cs" />
     <Compile Include="PlayerModels\Team_PlayerListItem.cs" />
-    <Compile Include="TeamModels\League_TeamListItem.cs" />
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetail.cs" />
     <Compile Include="PlayerModels\PlayerEdit.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="SportModels\SportCreate.cs" />
     <Compile Include="SportModels\SportDetail.cs" />
     <Compile Include="SportModels\SportListItem.cs" />
+    <Compile Include="TeamModels\League_Team_ListItem.cs" />
     <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamDetail.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
