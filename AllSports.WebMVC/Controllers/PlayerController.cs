@@ -73,22 +73,27 @@ namespace AllSports.WebMVC.Controllers
             var model = service.GetPlayersbyTeamId(id);
             return View(model);
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string userName, int id)
         {
-            var service = CreatePlayerService();
-            var detail = service.GetPlayerById(id);
+            var player = CreatePlayerService().GetPlayerById(id);
+            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
+            ViewBag.TeamId =Teams.Select(t => new SelectListItem()
+            { Value=t.TeamId.ToString(),
+            Text=t.TeamName,
+            Selected= player.TeamId == t.TeamId}
+            );
             var model =
                 new PlayerEdit 
                 {
-                    PlayerId = detail.PlayerId,
-                    FirstName= detail.FirstName,
-                    LastName= detail.LastName,
-                    JerseyNumber = detail.JerseyNumber,
-                    Height = detail.Height,
-                    Weight= detail.Weight,
-                    YearsWithTeam = detail.YearsWithTeam,
-                    TwitterHandle = detail.TwitterHandle,
-                    TeamId = detail.TeamId
+                    PlayerId = player.PlayerId,
+                    FirstName= player.FirstName,
+                    LastName= player.LastName,
+                    JerseyNumber = player.JerseyNumber,
+                    Height = player.Height,
+                    Weight= player.Weight,
+                    YearsWithTeam = player.YearsWithTeam,
+                    TwitterHandle = player.TwitterHandle,
+                    TeamId = player.TeamId
                 };
 
             return View(model);

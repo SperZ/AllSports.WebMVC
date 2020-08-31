@@ -72,19 +72,26 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string userName, int id)
         {
-            var service = CreateCoachService();
-            var detail = service.GetCoachById(id);
+            var coach = CreateCoachService().GetCoachById(id);
+            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
+            ViewBag.TeamId = Teams.Select(t => new SelectListItem()
+            {
+                Value = t.TeamId.ToString(),
+                Text= t.TeamName,
+                Selected=coach.TeamId == t.TeamId
+            }
+            );
             var model =
                 new CoachEdit
                 {
-                    CoachId = detail.CoachId,
-                    FirstName = detail.FirstName,
-                    LastName = detail.LastName,
-                    YearsWithTeam = detail.YearsWithTeam,
-                    CoachPosition = detail.CoachPosition,
-                    TeamId = detail.TeamId
+                    CoachId = coach.CoachId,
+                    FirstName = coach.FirstName,
+                    LastName = coach.LastName,
+                    YearsWithTeam = coach.YearsWithTeam,
+                    CoachPosition = coach.CoachPosition,
+                    TeamId = coach.TeamId
                 };
 
             return View(model);
