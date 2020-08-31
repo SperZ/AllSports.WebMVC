@@ -128,7 +128,7 @@ namespace AllSports.Services
                     ctx
                     .Players
                     .Single(e => e.PlayerId == model.PlayerId);
-
+                
                 updates.FirstName = model.FirstName;
                 updates.LastName = model.LastName;
                 updates.Weight = model.Weight;
