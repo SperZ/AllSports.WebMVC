@@ -1,4 +1,5 @@
-﻿using AllSports.Models.LeagueModels;
+﻿using AllSports.Data;
+using AllSports.Models.LeagueModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -26,8 +27,16 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string userName)
         {
+            List<Sport> Sports = (new SportService(userName)).GetSportsData().ToList();
+            var query = from S in Sports
+                        select new SelectListItem() 
+                        { 
+                            Value=S.SportId.ToString(),
+                            Text=S.SportName
+                        };
+            ViewBag.SportId = query.ToList();
             return View();
         }
 

@@ -5,6 +5,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,6 +53,14 @@ namespace AllSports.Services
 
                         );
                 return allsports.ToArray();
+            }
+        }
+
+        public IEnumerable<Sport> GetSportsData()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                return ctx.Sports.ToList();
             }
         }
 

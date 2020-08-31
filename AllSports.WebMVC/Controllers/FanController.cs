@@ -52,13 +52,21 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
-
-        public ActionResult ConnectFanWithTeam()
+        [Route("Fan/ConnectFanWithTeam/id")]
+        public ActionResult ConnectFanWithTeam(string userName)
         {
+            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
+            var query = from T in Teams
+                        select new SelectListItem()
+                        {
+                            Value = T.TeamId.ToString(),
+                            Text = T.TeamName
+                        };
+            ViewBag.TeamId = query.ToList();
             return View();
         }
 
-        [HttpPost, Route("Fan/ConnectFanWithTeam/id")]
+        [HttpPost]
         [ActionName("ConnectFanWithTeam")]// this must match the name of the method that returns the view
         [ValidateAntiForgeryToken]
         public ActionResult Connect(int id, ConnectFan model)
@@ -66,7 +74,7 @@ namespace AllSports.WebMVC.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateFanService();
-
+           
 
             if (service.ConnectFanToTeam(id, model))
             {

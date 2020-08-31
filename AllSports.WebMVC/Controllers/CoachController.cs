@@ -1,4 +1,5 @@
-﻿using AllSports.Models.CoachModels;
+﻿using AllSports.Data;
+using AllSports.Models.CoachModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -27,8 +28,16 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string userName)
         {
+            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
+            var query = from T in Teams
+                        select new SelectListItem() 
+                        { 
+                            Value=T.TeamId.ToString(),
+                            Text =T.TeamName
+                        };
+            ViewBag.TeamId = query.ToList();
             return View();
         }
 

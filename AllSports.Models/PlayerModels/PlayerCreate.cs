@@ -29,6 +29,7 @@ namespace AllSports.Models.PlayerModels
         public string College { get; set; }
         [Display(Name = "Twitter Handle")]
         public string TwitterHandle { get; set; }
+        [Display(Name = "Team")]
         public int? TeamId { get; set; }
     }
 }

@@ -57,6 +57,7 @@ namespace AllSports.Services
 
             }
         }
+
         public IEnumerable<FanListItem> GetFans()
         {
             using (var ctx = new ApplicationDbContext())

@@ -21,6 +21,7 @@ namespace AllSports.Models.LeagueModels
         [Required]
         [Display(Name = "Base Country")]
         public string BaseCountry { get; set; }
+        [Display(Name = "Sport")]
         public int SportId { get; set; }
     }
 }
