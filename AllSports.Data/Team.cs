@@ -6,10 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Data
 {
-    public class Team : ILocation
+    public class Team : ILocation, IPhoto
     {
         [Key]
         public int TeamId { get; set; }
@@ -24,7 +25,7 @@ namespace AllSports.Data
             {
                 decimal percentage = Convert.ToDecimal(Wins / (Wins + Losses));
                 return percentage;
-            } 
+            }
         }
         [Required]
         public string CityName { get; set; }
@@ -36,6 +37,11 @@ namespace AllSports.Data
         public virtual ICollection<Fan> Fans { get; set; }
         public virtual ICollection<Player> Players { get; set; }
         public virtual ICollection<Coach> Coaches { get; set; }
+
+        public string FileName { get; set; }
+
+        public byte[] FileContent { get; set; }
+        public HttpPostedFileBase File {get; set;}
 
         public Team()
         {

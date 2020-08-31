@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Data
 {
-    public class Player : IPerson , IInfo
+    public class Player : IPerson,  IInfo, IPhoto 
     {
         [Key]
         public int PlayerId { get; set; }
@@ -41,6 +42,9 @@ namespace AllSports.Data
         public int? TeamId { get; set; }
         [ForeignKey(nameof(TeamId))]
         public virtual Team Team { get; set; }
+        public string FileName { get; set; }
+        public byte[] FileContent { get; set; }
+        public HttpPostedFileBase File { get; set; }
 
     }    
 }
