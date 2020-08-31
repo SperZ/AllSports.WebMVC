@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<AllSports.Models.PlayerModels.Team_PlayerListItem>
-@using AllSports.Services
 
 @{
     ViewBag.Title = "List";
@@ -12,9 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.PlayerId)
         </th>
@@ -42,9 +38,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TeamId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.PlayerId)
         </td>
         <td>
@@ -66,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.College)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlayerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerId}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerId })
         </td>
     </tr>
 }

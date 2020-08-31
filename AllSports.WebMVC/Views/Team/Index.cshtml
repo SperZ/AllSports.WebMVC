@@ -52,8 +52,13 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TeamId }) |
+                @Html.ActionLink("View Details", "Details", new { id = item.TeamId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.TeamId })
+                <br />
+                <br />
+                @Html.ActionLink("See Players", "List", "Player", new { id=item.TeamId}, null) |
+                @Html.ActionLink("See Coaches", "CoachList", "Coach", new { id =item.TeamId}, null) |
+                @Html.ActionLink("See Fans", "FanList", "Fan", new {id=item.TeamId }, null)
             </td>
         </tr>
     }

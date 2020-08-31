@@ -28,9 +28,10 @@ namespace AllSports.Services
                     JerseyNumber = model.JerseyNumber,
                     Height = model.Height,
                     Weight = model.Weight,
+                    YearsWithTeam = model.YearsWithTeam,
                     College = model.College,
                     TwitterHandle = model.TwitterHandle,
-                    TeamId = model.TeamId,
+                    TeamId = model.TeamId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -82,6 +83,7 @@ namespace AllSports.Services
                         DateOfBirth = player.DateOfBirth,
                         Height = player.Height,
                         Weight = player.Weight,
+                        YearsWithTeam = player.YearsWithTeam,
                         JerseyNumber = player.JerseyNumber,
                         TeamName = GetTeamName(id),
                         College = player.College,
@@ -114,11 +116,11 @@ namespace AllSports.Services
                         }
 
                         );
-                return allplayers.ToArray();
+                return allplayers.ToArray().OrderBy(e => e.LastName);
             }
         }
 
-        public bool UpdatePlayer(PlayerEdit model) // not added to controller
+        public bool UpdatePlayer(PlayerEdit model) 
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -132,6 +134,7 @@ namespace AllSports.Services
                 updates.Weight = model.Weight;
                 updates.Height = model.Height;
                 updates.JerseyNumber = model.JerseyNumber;
+                updates.YearsWithTeam = model.YearsWithTeam;
                 updates.TeamId = model.TeamId;
                 updates.TwitterHandle = model.TwitterHandle;
 

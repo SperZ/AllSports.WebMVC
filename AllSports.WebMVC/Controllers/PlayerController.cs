@@ -58,11 +58,11 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpGet, Route("Player/List/?teamId={id}")]
-        public ActionResult List(int teamId)
+        [HttpGet, Route("Player/List/id")]
+        public ActionResult List(int id)
         {
             var service = CreatePlayerService();
-            var model = service.GetPlayersbyTeamId(teamId);
+            var model = service.GetPlayersbyTeamId(id);
             return View(model);
         }
         public ActionResult Edit(int id)
@@ -72,12 +72,12 @@ namespace AllSports.WebMVC.Controllers
             var model =
                 new PlayerEdit 
                 {
-                    PlayerId =detail.PlayerId,
-                    FirstName=detail.FirstName,
+                    PlayerId = detail.PlayerId,
+                    FirstName= detail.FirstName,
                     LastName= detail.LastName,
                     JerseyNumber = detail.JerseyNumber,
                     Height = detail.Height,
-                    Weight=detail.Weight,
+                    Weight= detail.Weight,
                     YearsWithTeam = detail.YearsWithTeam,
                     TwitterHandle = detail.TwitterHandle,
                     TeamId = detail.TeamId

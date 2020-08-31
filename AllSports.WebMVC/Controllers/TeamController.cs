@@ -1,4 +1,5 @@
-﻿using AllSports.Models.TeamModels;
+﻿using AllSports.Data;
+using AllSports.Models.TeamModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -23,13 +24,21 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult Index()
         {
             var service = CreateTeamService();
-            var list = service.GetTeams().ToList();
-            var model = list.OrderBy(e => e.TeamId);
+            var model = service.GetTeams();
             return View(model);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string username)
         {
+
+            List<League> Leagues = (new LeagueService(username)).GetLeaguesData().ToList();
+            var query = from l in Leagues
+                        select new SelectListItem() 
+                        { Value= l.LeagueId.ToString(),
+                        Text = l.LeagueName
+                        };
+            ViewBag.LeagueId=query.ToList();
+
             return View();
         }
 
@@ -51,6 +60,15 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+
+        [HttpGet, Route("Team/TeamList/id")]
+        public ActionResult TeamList(int id)
+        {
+            var service = CreateTeamService();
+            var model = service.GetTeamsByFanId(id);
+            return View(model);
+        }
+
 
         public ActionResult Details(int id)
         {

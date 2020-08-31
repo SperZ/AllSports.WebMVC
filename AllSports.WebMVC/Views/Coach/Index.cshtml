@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -23,23 +32,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoachId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CoachId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CoachId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CoachId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoachId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CoachId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CoachId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CoachId })
+            </td>
+        </tr>
+    }
 
 </table>

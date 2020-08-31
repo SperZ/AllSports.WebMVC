@@ -55,11 +55,11 @@ namespace AllSports.WebMVC.Controllers
             var model = service.GetCoachById(id);
             return View(model);
         }
-
-        public ActionResult CoachList(int teamId)
+        [HttpGet, Route("Coach/CoachList/id")]
+        public ActionResult CoachList(int id)
         {
             var service = CreateCoachService();
-            var model = service.GetCoachesbyTeamId(teamId);
+            var model = service.GetCoachesbyTeamId(id);
             return View(model);
         }
 
@@ -119,8 +119,8 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult DeleteCoach(int id)
         {
             var service = CreateCoachService();
-            service.Delete(id);
             var model = service.GetCoachById(id);
+            service.Delete(id);
             TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been deleted";
 
             return RedirectToAction("Index");

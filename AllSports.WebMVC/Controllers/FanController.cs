@@ -58,17 +58,17 @@ namespace AllSports.WebMVC.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, Route("Fan/ConnectFanWithTeam/id")]
         [ActionName("ConnectFanWithTeam")]// this must match the name of the method that returns the view
         [ValidateAntiForgeryToken]
-        public ActionResult ConnectFanWithTeam(ConnectFan model)
+        public ActionResult Connect(int id, ConnectFan model)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateFanService();
 
 
-            if (service.ConnectFanToTeam(model))
+            if (service.ConnectFanToTeam(id, model))
             {
                 TempData["SaveResult"] = $"You are now a fan of {model.TeamId}";
                 return RedirectToAction("Index");
@@ -79,10 +79,11 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult FanList(int teamId)
+        [HttpGet, Route("Fan/FanList/id")]
+        public ActionResult FanList(int id)
         {
             var service = CreateFanService();
-            var model = service.GetFansByTeamId(teamId);
+            var model = service.GetFansByTeamId(id);
             return View(model);
         }
 
@@ -115,7 +116,7 @@ namespace AllSports.WebMVC.Controllers
         [HttpPost]
         [ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateFan(int id, FanEdit model)
+        public ActionResult UpdateFan(FanEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
@@ -123,7 +124,7 @@ namespace AllSports.WebMVC.Controllers
             if (service.UpdateFan(model))
             {
                 TempData["SaveResult"] = $"{model.FirstName} {model.LastName}s' information has been updated.";
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
             ModelState.AddModelError("", $"Unable to update {model.FirstName} {model.LastName}s' information.");

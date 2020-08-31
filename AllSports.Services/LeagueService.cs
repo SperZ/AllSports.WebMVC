@@ -3,6 +3,7 @@ using AllSports.Models.LeagueModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,6 +52,14 @@ namespace AllSports.Services
 
                         );
                 return allLeagues.ToArray();
+            }
+        }
+
+        public IEnumerable<League> GetLeaguesData()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Leagues.ToList();
             }
         }
 

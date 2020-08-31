@@ -57,10 +57,17 @@ namespace AllSports.Services
                         }
 
                         );
-                return allTeams.ToArray();
+                return allTeams.ToArray().OrderBy(e => e.TeamName);
             }
         }
 
+        public IEnumerable<Team> GetTeamsData()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                return ctx.Teams.ToList();
+            }
+        }
         public TeamDetail GetTeamById(int teamId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -127,6 +134,27 @@ namespace AllSports.Services
                 entity.State = model.State;
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<TeamListItem> GetTeamsByFanId(int fanId)// not added to controller
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var allteams =
+                    ctx
+                    .Fans
+                    .Single(e => e.FanId == fanId)
+                    .Teams
+                    .Select(
+                        e =>
+                        new TeamListItem()
+                        {
+                            TeamId = e.TeamId,
+                            TeamName = e.TeamName,
+                        }
+                        );
+                return allteams.ToArray();
             }
         }
 

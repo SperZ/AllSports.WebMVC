@@ -30,42 +30,42 @@ namespace AllSports.Services
                     UserName = _userName
                 };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Fans.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ConnectFanToTeam(ConnectFan model)// not added to controller
+        public bool ConnectFanToTeam(int Id, ConnectFan model)// not added to controller
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var fan =
                     ctx
                     .Fans
-                    .Single(e => e.UserName == _userName);
+                    .Single(e => e.UserName == _userName && e.FanId == Id);
+              
 
                 var team =
                     ctx
                     .Teams
                     .Single(e => e.TeamId == model.TeamId);
 
-                team.Fans.Add(fan);
                 fan.Teams.Add(team);
-
-                return ctx.SaveChanges() == 1;
+                
+               return ctx.SaveChanges() == 1;
 
             }
         }
         public IEnumerable<FanListItem> GetFans()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Fans
                     .Select(e =>
-                  new FanListItem 
+                  new FanListItem
                   {
                       FanId = e.FanId,
                       FirstName = e.FirstName,
@@ -77,9 +77,9 @@ namespace AllSports.Services
         }
 
 
-            public IEnumerable<FanListItem> GetFansByTeamId(int teamId)// not added to controller
+        public IEnumerable<FanListItem> GetFansByTeamId(int teamId)// not added to controller
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var allfans =
                     ctx
@@ -101,7 +101,7 @@ namespace AllSports.Services
 
         public FanDetail GetFanbyId(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
@@ -120,14 +120,15 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdateFan(FanEdit model) // not added to controller
+        public bool UpdateFan(FanEdit model) // added to controller but not working throws error on razor page return to index view.
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var updates =
                     ctx
                     .Fans
-                    .Single(e => e.UserName == _userName || e.FanId == model.FanId);
+                    .Single(e => e.UserName ==_userName && e.FanId == model.FanId);
+
                 updates.FirstName = model.FirstName;
                 updates.LastName = model.LastName;
                 updates.CityName = model.CityName;
@@ -139,7 +140,7 @@ namespace AllSports.Services
 
         public bool Delete(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

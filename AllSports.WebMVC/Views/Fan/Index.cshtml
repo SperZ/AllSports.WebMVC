@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -23,24 +32,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FanId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CityName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.FanId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.FanId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.FanId })
-            @Html.ActionLink("Support A Tean", "ConnnectFanWithTeam", new { id = item.FanId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FanId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FanId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FanId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FanId }) |
+                @Html.ActionLink("See Teams", "TeamList", "Team", new { id = item.FanId }, null) |
+                @Html.ActionLink("Support A Tean", "ConnectFanWithTeam", new { id = item.FanId })
+            </td>
+        </tr>
+    }
 
 </table>
