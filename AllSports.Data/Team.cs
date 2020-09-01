@@ -10,7 +10,7 @@ using System.Web;
 
 namespace AllSports.Data
 {
-    public class Team : ILocation, IPhoto
+    public class Team : ILocation /*IPhoto*/
     {
         [Key]
         public int TeamId { get; set; }
@@ -38,10 +38,10 @@ namespace AllSports.Data
         public virtual ICollection<Player> Players { get; set; }
         public virtual ICollection<Coach> Coaches { get; set; }
 
-        public string FileName { get; set; }
+        //public string FileName { get; set; }
 
-        public byte[] FileContent { get; set; }
-        public HttpPostedFileBase File {get; set;}
+        //public byte[] FileContent { get; set; }
+        //public HttpPostedFileBase File {get; set;}
 
         public Team()
         {

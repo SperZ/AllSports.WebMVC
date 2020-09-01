@@ -9,12 +9,20 @@ using System.Web;
 
 namespace AllSports.Data
 {
-    public class Player : IPerson,  IInfo, IPhoto 
+    public class Player : IPerson,  IInfo/*, IPhoto */
     {
         [Key]
         public int PlayerId { get; set; }
         [Required]
         public string FirstName { get; set; }
+        public string FullName
+        {
+            get 
+            {
+                string fullName = $"{FirstName} {LastName}";
+                return fullName;
+            }
+        }
         [Required]
         public string LastName { get; set; }
         [Required]
@@ -42,9 +50,10 @@ namespace AllSports.Data
         public int? TeamId { get; set; }
         [ForeignKey(nameof(TeamId))]
         public virtual Team Team { get; set; }
-        public string FileName { get; set; }
-        public byte[] FileContent { get; set; }
-        public HttpPostedFileBase File { get; set; }
+        public ICollection<Story> Story { get; set; }
+        //public string FileName { get; set; }
+        //public byte[] FileContent { get; set; }
+        //public HttpPostedFileBase File { get; set; }
 
     }    
 }

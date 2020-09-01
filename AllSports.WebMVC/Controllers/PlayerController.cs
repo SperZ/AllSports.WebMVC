@@ -29,8 +29,8 @@ namespace AllSports.WebMVC.Controllers
 
         public ActionResult Create(string userName)
         {
-            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
-            var query = from T in Teams
+            List<Team> teams = (new TeamService(userName)).GetTeamsData().ToList();
+            var query = from T in teams
                         select new SelectListItem()
                         {
                             Value = T.TeamId.ToString(),

@@ -37,6 +37,7 @@ namespace AllSports.Data
         public DbSet<Player> Players { get; set; }
         public DbSet<Coach> Coaches { get; set; }
         public DbSet<Fan> Fans { get; set; }
+        public DbSet<Story> Stories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

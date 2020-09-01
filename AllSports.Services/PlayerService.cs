@@ -53,7 +53,7 @@ namespace AllSports.Services
                         new PlayerListItem
                         {
                             PlayerId = e.PlayerId,
-                            FirstName = e.FirstName,
+                            FirstName=e.FirstName,
                             LastName = e.LastName,
                             TeamName = e.Team.TeamName,
                             JerseyNumber = e.JerseyNumber,
@@ -63,6 +63,14 @@ namespace AllSports.Services
                 return allplayers.ToArray();
             }
 
+        }
+
+        public  IEnumerable<Player> GetPlayersData()
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                return ctx.Players.ToList();
+            }
         }
 
         public PlayerDetail GetPlayerById(int id)

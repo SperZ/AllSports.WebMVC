@@ -53,3 +53,9 @@ a.btn:hover{
 input.btn{
     color: white;
 }
+
+ul.nav li
+{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}

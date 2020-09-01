@@ -5,20 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AllSports.Models.PlayerModels
+namespace AllSports.Models.StoryFolder
 {
-    public class PlayerListItem
+    public class StoryListItem
     {
-        [Display(Name = "Id")]
-        public int PlayerId { get; set; }
-        [Required]
+        [Display(Name ="Id")]    
+        public int StoryId { get; set; }
+        public string HeadLine { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Display(Name = "Jersey Number")]
-        public int? JerseyNumber { get; set; }
-        [Display(Name = "Team")]
-        public string TeamName { get; set; }
+        [Display(Name = "Published")]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }

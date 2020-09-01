@@ -12,12 +12,10 @@ namespace AllSports.Data
         public int StoryId { get; set; }
 
         public string HeadLine { get; set; }
-
-        public string Description { get; set; }
-        public int? TeamId { get; set; }
+        public string Content { get; set; }
+        public DateTimeOffset CreatedUTC { get; set; }
+        public string UserName { get; set; }
         public int? PlayerId { get; set; }
-        [ForeignKey(nameof(TeamId))]
-        public virtual Team Team { get; set; }
         [ForeignKey(nameof(PlayerId))]
         public virtual Player Player { get; set; }
     }

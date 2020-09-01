@@ -17,6 +17,13 @@ namespace AllSports.Data
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+
+        public string FullName { get 
+            {
+                var fullName = $"{FirstName} {LastName}";
+                return fullName;
+            } 
+        }
         public int? YearsWithTeam { get; set;}
         public string College { get; set; }
         public TypeOfCoach CoachPosition { get; set; }
