@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Models.PlayerModels
 {
@@ -17,5 +20,9 @@ namespace AllSports.Models.PlayerModels
         public int? YearsWithTeam { get; set; }
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
+        //[Display(Name = "Photo")]
+        //public byte[] Contents { get; set; }
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
     }
 }

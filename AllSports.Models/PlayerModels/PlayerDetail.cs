@@ -30,5 +30,6 @@ namespace AllSports.Models.PlayerModels
         public int? TeamId { get; set; }
         [Display(Name = "Team")]
         public string TeamName { get; set; }
+        //public byte[] Contents { get; set; }
     }
 }

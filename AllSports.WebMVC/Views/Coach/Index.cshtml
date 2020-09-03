@@ -24,10 +24,7 @@
             @Html.DisplayNameFor(model => model.CoachId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.FullName)
         </th>
         <th></th>
     </tr>
@@ -39,10 +36,7 @@
                 @Html.DisplayFor(modelItem => item.CoachId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CoachId }) |

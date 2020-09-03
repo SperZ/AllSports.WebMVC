@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize(Roles ="admin")]   
     public class LeagueController : Controller
     {
         [Authorize]
@@ -19,7 +20,9 @@ namespace AllSports.WebMVC.Controllers
             var service = new LeagueService(userName);
             return service;
         }
+
         // GET: League
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var service = CreateLeagueService();
@@ -59,6 +62,7 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var service = CreateLeagueService();

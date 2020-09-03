@@ -50,8 +50,7 @@ namespace AllSports.Services
                         new CoachListItem()
                         {
                             CoachId = e.CoachId,
-                            FirstName = e.FirstName,
-                            LastName = e.LastName
+                            FullName = e.FirstName + " " + e.LastName
                         }
                         );
                 return allcoaches.ToArray();

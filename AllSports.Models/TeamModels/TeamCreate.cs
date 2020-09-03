@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Models.TeamModels
 {
@@ -23,5 +25,9 @@ namespace AllSports.Models.TeamModels
         public StateAbbreviation State { get; set; }
         [Display(Name = "League")]
         public int LeagueId { get; set; }
+        //public byte[] Contents { get; set; }
+        //[Display(Name = "Photo")]
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
     }
 }

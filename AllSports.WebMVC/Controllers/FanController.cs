@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class FanController : Controller
     {
         public FanService CreateFanService()

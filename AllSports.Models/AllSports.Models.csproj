@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,7 +69,7 @@
     <Compile Include="LeagueModels\LeagueDetail.cs" />
     <Compile Include="LeagueModels\LeagueEdit.cs" />
     <Compile Include="LeagueModels\LeagueListItem.cs" />
-    <Compile Include="StoryFolder\StoryCreate.cs" />
+    <Compile Include="StoryModels\StoryCreate.cs" />
     <Compile Include="PlayerModels\Team_PlayerListItem.cs" />
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetail.cs" />
@@ -78,13 +79,16 @@
     <Compile Include="SportModels\SportCreate.cs" />
     <Compile Include="SportModels\SportDetail.cs" />
     <Compile Include="SportModels\SportListItem.cs" />
-    <Compile Include="StoryFolder\StoryDetail.cs" />
-    <Compile Include="StoryFolder\StoryListItem.cs" />
+    <Compile Include="StoryModels\StoryDetail.cs" />
+    <Compile Include="StoryModels\StoryListItem.cs" />
     <Compile Include="TeamModels\League_Team_ListItem.cs" />
     <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamDetail.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
     <Compile Include="TeamModels\TeamListItem.cs" />
+    <Compile Include="UserModels\UserDetail.cs" />
+    <Compile Include="UserModels\UserEdit.cs" />
+    <Compile Include="UserModels\UserListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

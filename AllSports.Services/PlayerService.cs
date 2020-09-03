@@ -2,6 +2,7 @@
 using AllSports.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -19,20 +20,28 @@ namespace AllSports.Services
 
         public bool CreatePlayer(PlayerCreate model)
         {
+            //byte[] bytes = null;
+            //if (model.File != null)
+            //{
+            //    Stream fileStream = model.File.InputStream;
+            //    BinaryReader reader = new BinaryReader(fileStream);
+            //    bytes = reader.ReadBytes((Int32)fileStream.Length);
+            //}
             var player =
-                new Player()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    DateOfBirth = model.DateOfBirth,
-                    JerseyNumber = model.JerseyNumber,
-                    Height = model.Height,
-                    Weight = model.Weight,
-                    YearsWithTeam = model.YearsWithTeam,
-                    College = model.College,
-                    TwitterHandle = model.TwitterHandle,
-                    TeamId = model.TeamId
-                };
+            new Player()
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                JerseyNumber = model.JerseyNumber,
+                Height = model.Height,
+                Weight = model.Weight,
+                YearsWithTeam = model.YearsWithTeam,
+                College = model.College,
+                TwitterHandle = model.TwitterHandle,
+                TeamId = model.TeamId,
+                //Contents =bytes
+            };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Players.Add(player);
@@ -53,7 +62,7 @@ namespace AllSports.Services
                         new PlayerListItem
                         {
                             PlayerId = e.PlayerId,
-                            FirstName=e.FirstName,
+                            FirstName = e.FirstName,
                             LastName = e.LastName,
                             TeamName = e.Team.TeamName,
                             JerseyNumber = e.JerseyNumber,
@@ -65,9 +74,9 @@ namespace AllSports.Services
 
         }
 
-        public  IEnumerable<Player> GetPlayersData()
+        public IEnumerable<Player> GetPlayersData()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 return ctx.Players.ToList();
             }
@@ -96,6 +105,7 @@ namespace AllSports.Services
                         TeamName = GetTeamName(id),
                         College = player.College,
                         TwitterHandle = GetTwitterHandle(id),
+                        //Contents = player.Contents
                     };
             }
         }
@@ -128,15 +138,19 @@ namespace AllSports.Services
             }
         }
 
-        public bool UpdatePlayer(PlayerEdit model) 
+        public bool UpdatePlayer(PlayerEdit model)
         {
+            //Stream fileStream = model.File.InputStream;
+            //BinaryReader reader = new BinaryReader(fileStream);
+            //byte[] bytes = reader.ReadBytes((Int32)fileStream.Length);
+
             using (var ctx = new ApplicationDbContext())
             {
                 var updates =
                     ctx
                     .Players
                     .Single(e => e.PlayerId == model.PlayerId);
-                
+
                 updates.FirstName = model.FirstName;
                 updates.LastName = model.LastName;
                 updates.Weight = model.Weight;
@@ -154,7 +168,7 @@ namespace AllSports.Services
 
         public bool Delete(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

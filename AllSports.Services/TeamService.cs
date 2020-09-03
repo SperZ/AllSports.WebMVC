@@ -3,6 +3,7 @@ using AllSports.Models.LeagueModels;
 using AllSports.Models.TeamModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -20,6 +21,13 @@ namespace AllSports.Services
 
         public bool CreateTeam(TeamCreate model)
         {
+            //byte[] bytes = null;
+            //if (model.File != null)
+            //{
+            //    Stream fileStream = model.File.InputStream;
+            //    BinaryReader reader = new BinaryReader(fileStream);
+            //    bytes = reader.ReadBytes((Int32)fileStream.Length);
+            //}
             var entity =
                 new Team()
                 {
@@ -29,6 +37,7 @@ namespace AllSports.Services
                     State = model.State,
                     Wins = model.Wins,
                     Losses = model.Losses,
+                    //Contents = bytes
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -86,7 +95,9 @@ namespace AllSports.Services
                         CityName = entity.CityName,
                         State = entity.State,
                         //CostOfTeam = GetAllPlayersSalary(teamId),
-                        LeagueName = entity.League.LeagueName
+                        LeagueName = entity.League.LeagueName,
+                        //Contents = entity.Contents
+                       
                     };
             }
         }
@@ -121,6 +132,9 @@ namespace AllSports.Services
 
         public bool UpdateTeam(TeamEdit model) // not added to controller
         {
+            //Stream fileStream = model.File.InputStream;
+            //BinaryReader reader = new BinaryReader(fileStream);
+            //byte[] bytes = reader.ReadBytes((Int32)fileStream.Length);
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
@@ -132,7 +146,7 @@ namespace AllSports.Services
                 entity.Losses = model.Losses;
                 entity.CityName = model.CityName;
                 entity.State = model.State;
-
+                //entity.Contents = model.Contents;
                 return ctx.SaveChanges() == 1;
             }
         }

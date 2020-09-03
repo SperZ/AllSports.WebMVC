@@ -1,5 +1,5 @@
 ﻿using AllSports.Data;
-using AllSports.Models.StoryFolder;
+using AllSports.Models.StoryModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

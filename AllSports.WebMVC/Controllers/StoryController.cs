@@ -1,5 +1,5 @@
 ﻿using AllSports.Data;
-using AllSports.Models.StoryFolder;
+using AllSports.Models.StoryModels;
 using AllSports.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class StoryController : Controller
     {
         public StoryService CreateStoryService()

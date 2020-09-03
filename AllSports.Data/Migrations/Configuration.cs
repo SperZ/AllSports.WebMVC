@@ -217,7 +217,7 @@ namespace AllSports.Data.Migrations
                     Height = "7' 3",
                     Weight = 240,
                     YearsWithTeam = 1,
-                    College="None",
+                    College = "None",
                     TwitterHandle = "https://twitter.com/kporzee",
                     TeamId = 3,
                 },
@@ -229,58 +229,51 @@ namespace AllSports.Data.Migrations
                     JerseyNumber = 30,
                     Height = "6' 2",
                     Weight = 185,
-                    YearsWithTeam=2,
-                    College="Duke",
-                    TwitterHandle= "https://twitter.com/sdotcurry",
-                    TeamId=3,
+                    YearsWithTeam = 2,
+                    College = "Duke",
+                    TwitterHandle = "https://twitter.com/sdotcurry",
+                    TeamId = 3,
                 },
-                new Player() 
-                { 
-                    FirstName="Wendell",
-                    LastName="Carter Jr.",
+                new Player()
+                {
+                    FirstName = "Wendell",
+                    LastName = "Carter Jr.",
                     DateOfBirth = new DateTime(1999, 04, 16),
-                    JerseyNumber=34,
-                    Height="6' 9",
-                    Weight=270,
-                    YearsWithTeam=2,
-                    College="Duke",
-                    TwitterHandle= "https://twitter.com/WendellCarterJr",
-                    TeamId=4,
+                    JerseyNumber = 34,
+                    Height = "6' 9",
+                    Weight = 270,
+                    YearsWithTeam = 2,
+                    College = "Duke",
+                    TwitterHandle = "https://twitter.com/WendellCarterJr",
+                    TeamId = 4,
                 },
-                new Player() {
-                    FirstName="Coby",
-                    LastName="White",
-                    DateOfBirth=new DateTime(2000, 02, 16),
-                    JerseyNumber=0,
-                    Height="6' 4",
-                    Weight=195,
-                    YearsWithTeam=1,
-                    College="North Carolina",
-                    TwitterHandle= "https://twitter.com/CobyWhite",
-                    TeamId=4
+                new Player()
+                {
+                    FirstName = "Coby",
+                    LastName = "White",
+                    DateOfBirth = new DateTime(2000, 02, 16),
+                    JerseyNumber = 0,
+                    Height = "6' 4",
+                    Weight = 195,
+                    YearsWithTeam = 1,
+                    College = "North Carolina",
+                    TwitterHandle = "https://twitter.com/CobyWhite",
+                    TeamId = 4
                 },
-                new Player() {
-                    FirstName="Thaddeus",
-                    LastName="Young",
-                    DateOfBirth= new DateTime(1988, 06, 21),
-                    JerseyNumber=21,
-                    Height="6' 8",
-                    Weight=235,
-                    YearsWithTeam=1,
-                    College="Georgia Tech",
-                    TwitterHandle="",
-                    TeamId=4 
+                new Player()
+                {
+                    FirstName = "Thaddeus",
+                    LastName = "Young",
+                    DateOfBirth = new DateTime(1988, 06, 21),
+                    JerseyNumber = 21,
+                    Height = "6' 8",
+                    Weight = 235,
+                    YearsWithTeam = 1,
+                    College = "Georgia Tech",
+                    TwitterHandle = "",
+                    TeamId = 4
                 }// last database up date point
-
-
-
-
-
-
-
-
-
-                ) ;
+                );
             context.SaveChanges();
 
 
@@ -304,3 +297,4 @@ namespace AllSports.Data.Migrations
         }
     }
 }
+

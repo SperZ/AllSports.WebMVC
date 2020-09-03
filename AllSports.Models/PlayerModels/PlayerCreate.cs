@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Models.PlayerModels
 {
@@ -31,5 +33,10 @@ namespace AllSports.Models.PlayerModels
         public string TwitterHandle { get; set; }
         [Display(Name = "Team")]
         public int? TeamId { get; set; }
+
+        //public byte[] Contents { get; set; }
+        //[Display(Name = "Photo")]
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
     }
 }

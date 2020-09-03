@@ -19,6 +19,7 @@ namespace AllSports.WebMVC.Controllers
             return service;
         }
         // GET: Sport
+        [AllowAnonymous]
         public ActionResult Index()
         {
             SportService sportService = CreateSportService();
@@ -27,6 +28,7 @@ namespace AllSports.WebMVC.Controllers
         }
 
         //Get: SportsCreate View
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -53,6 +55,7 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var service = CreateSportService();
@@ -62,6 +65,7 @@ namespace AllSports.WebMVC.Controllers
         }
 
         //Get Delete View
+        [Authorize(Roles = "admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

@@ -9,8 +9,7 @@ namespace AllSports.Data
 {
     interface IPhoto
     {
-        string FileName { get; set; }
-        byte[] FileContent { get; set; }
+        byte[] Contents { get; set; }
         HttpPostedFileBase File { get; set; }
     }
 }
