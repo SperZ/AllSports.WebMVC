@@ -496,11 +496,11 @@ namespace AllSports.WebMVC.Controllers
             var UserRoles = UserManager.GetRoles(currentUserId);
             bool UserIsAdmin = UserRoles.Any(r => r == "admin");
 
-            if (!currentRoles.Contains("admin"))
-            {
-                ModelState.AddModelError("", "Access Denied");
-                return View(model);
-            }
+            //if (!currentRoles.Contains("admin"))
+            //{
+            //    ModelState.AddModelError("", "Access Denied");
+            //    return View(model);
+            //}
 
             if (!ModelState.IsValid) return View(model);
 

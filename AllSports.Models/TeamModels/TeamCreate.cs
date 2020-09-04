@@ -25,9 +25,9 @@ namespace AllSports.Models.TeamModels
         public StateAbbreviation State { get; set; }
         [Display(Name = "League")]
         public int LeagueId { get; set; }
-        //public byte[] Contents { get; set; }
-        //[Display(Name = "Photo")]
-        //[NotMapped]
-        //public HttpPostedFileBase File { get; set; }
+        public byte[] Contents { get; set; }
+        [Display(Name = "Photo")]
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
     }
 }

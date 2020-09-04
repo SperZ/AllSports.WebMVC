@@ -34,9 +34,9 @@ namespace AllSports.Models.PlayerModels
         [Display(Name = "Team")]
         public int? TeamId { get; set; }
 
-        //public byte[] Contents { get; set; }
-        //[Display(Name = "Photo")]
-        //[NotMapped]
-        //public HttpPostedFileBase File { get; set; }
+        public byte[] Contents { get; set; }
+        [Display(Name = "Photo")]
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
     }
 }

@@ -23,6 +23,6 @@ namespace AllSports.Models.TeamModels
         public StateAbbreviation State { get; set; }
         [Display(Name ="League")]
         public string LeagueName { get; set; }
-        //public byte[] Contents { get; set; }
+        public byte[] Contents { get; set; }
     }
 }

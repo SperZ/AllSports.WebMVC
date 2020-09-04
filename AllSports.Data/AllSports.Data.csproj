@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202009011407457_StoryClass.Designer.cs">
       <DependentUpon>202009011407457_StoryClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009031959206_AddedImageProperties.cs" />
+    <Compile Include="Migrations\202009031959206_AddedImageProperties.Designer.cs">
+      <DependentUpon>202009031959206_AddedImageProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="Player.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009011407457_StoryClass.resx">
       <DependentUpon>202009011407457_StoryClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031959206_AddedImageProperties.resx">
+      <DependentUpon>202009031959206_AddedImageProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,6 @@
 using AllSports.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -20,13 +19,6 @@ namespace AllSports.Services
 
         public bool CreatePlayer(PlayerCreate model)
         {
-            //byte[] bytes = null;
-            //if (model.File != null)
-            //{
-            //    Stream fileStream = model.File.InputStream;
-            //    BinaryReader reader = new BinaryReader(fileStream);
-            //    bytes = reader.ReadBytes((Int32)fileStream.Length);
-            //}
             var player =
             new Player()
             {
@@ -40,7 +32,6 @@ namespace AllSports.Services
                 College = model.College,
                 TwitterHandle = model.TwitterHandle,
                 TeamId = model.TeamId,
-                //Contents =bytes
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -105,7 +96,6 @@ namespace AllSports.Services
                         TeamName = GetTeamName(id),
                         College = player.College,
                         TwitterHandle = GetTwitterHandle(id),
-                        //Contents = player.Contents
                     };
             }
         }
@@ -140,9 +130,6 @@ namespace AllSports.Services
 
         public bool UpdatePlayer(PlayerEdit model)
         {
-            //Stream fileStream = model.File.InputStream;
-            //BinaryReader reader = new BinaryReader(fileStream);
-            //byte[] bytes = reader.ReadBytes((Int32)fileStream.Length);
 
             using (var ctx = new ApplicationDbContext())
             {

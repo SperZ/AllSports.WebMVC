@@ -9,7 +9,7 @@ using System.Web;
 
 namespace AllSports.Data
 {
-    public class Player : IPerson,  IInfo  /*IPhoto*/
+    public class Player : IPerson,  IInfo,  IPhoto
     {
         [Key]
         public int PlayerId { get; set; }
@@ -51,8 +51,9 @@ namespace AllSports.Data
         [ForeignKey(nameof(TeamId))]
         public virtual Team Team { get; set; }
         public ICollection<Story> Story { get; set; }
-        //public byte[] Contents { get; set; }
-        //public HttpPostedFileBase File { get; set; }
+        public byte[] Contents { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
 
     }    
 }
