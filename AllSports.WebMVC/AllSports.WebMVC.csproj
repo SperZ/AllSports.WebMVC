@@ -168,8 +168,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoachController.cs" />
+    <Compile Include="Controllers\FanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeagueController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\SportController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +186,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\LogoMakr_6GDXaZ.png" />
+    <Content Include="Assets\LogoMakr_9KP5OA.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -234,6 +243,48 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Index.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
+    <Content Include="Views\Sport\Delete.cshtml" />
+    <Content Include="Views\League\Index.cshtml" />
+    <Content Include="Views\League\Create.cshtml" />
+    <Content Include="Views\League\Details.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\Details.cshtml" />
+    <Content Include="Views\Player\Details.cshtml" />
+    <Content Include="Views\Fan\Details.cshtml" />
+    <Content Include="Views\Player\Delete.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Fan\Delete.cshtml" />
+    <Content Include="Views\League\Delete.cshtml" />
+    <Content Include="Views\Coach\Index.cshtml" />
+    <Content Include="Views\Coach\Create.cshtml" />
+    <Content Include="Views\Coach\Details.cshtml" />
+    <Content Include="Views\Coach\Delete.cshtml" />
+    <Content Include="Views\Coach\CoachList.cshtml" />
+    <Content Include="Views\Player\Edit.cshtml" />
+    <Content Include="Views\Coach\Edit.cshtml" />
+    <Content Include="Views\Fan\FanList.cshtml" />
+    <Content Include="Views\Fan\Edit.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\League\Edit.cshtml" />
+    <Content Include="Views\Fan\Index.cshtml" />
+    <Content Include="Views\Player\List.cshtml" />
+    <Content Include="Views\Fan\Create.cshtml" />
+    <Content Include="Views\Fan\ConnectFanWithTeam.cshtml" />
+    <Content Include="Views\Team\TeamList.cshtml" />
+    <Content Include="Views\Team\GetTeamsByLeague.cshtml" />
+    <Content Include="Views\Story\Index.cshtml" />
+    <Content Include="Views\Story\Create.cshtml" />
+    <Content Include="Views\Story\Details.cshtml" />
+    <Content Include="Views\Story\Delete.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Team\Create.cshtml" />
+    <Content Include="Views\Player\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AllSports.Models.TeamModels.TeamListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Teams</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SportName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeagueName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeagueName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |
+                @Html.ActionLink("View Details", "Details", new { id = item.TeamId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeamId })
+                <br />
+                <br />
+                @Html.ActionLink("See Players", "List", "Player", new { id=item.TeamId}, null) |
+                @Html.ActionLink("See Coaches", "CoachList", "Coach", new { id =item.TeamId}, null) |
+                @Html.ActionLink("See Fans", "FanList", "Fan", new {id=item.TeamId }, null)
+            </td>
+        </tr>
+    }
+
+</table>

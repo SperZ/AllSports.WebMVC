@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AllSports.Models.TeamModels.League_Team_ListItem>
+
+@{
+    ViewBag.Title = "GetTeamsByLeague";
+}
+
+<h2>Teams in Leqgue</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wins)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Losses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wins)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Losses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TeamId  }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TeamId}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TeamId})
+        </td>
+    </tr>
+}
+
+</table>
