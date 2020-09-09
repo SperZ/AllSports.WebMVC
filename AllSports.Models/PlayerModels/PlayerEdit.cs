@@ -18,11 +18,12 @@ namespace AllSports.Models.PlayerModels
         public string Height { get; set; }
         public int Weight { get; set; }
         public int? YearsWithTeam { get; set; }
+        [DataType(DataType.Url)]
         public string TwitterHandle { get; set; }
         public int? TeamId { get; set; }
-        //[Display(Name = "Photo")]
-        //public byte[] Contents { get; set; }
-        //[NotMapped]
-        //public HttpPostedFileBase File { get; set; }
+        [Display(Name = "Photo")]
+        public byte[] Contents { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
     }
 }

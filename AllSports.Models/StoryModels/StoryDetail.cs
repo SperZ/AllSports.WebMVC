@@ -9,6 +9,8 @@ namespace AllSports.Models.StoryModels
 {
     public class StoryDetail
     {
+        [Display(Name ="Id")]
+        public int StoryId { get; set; }
         public string HeadLine { get; set; }
         public string Content { get; set; }
         [Display(Name = "First Name")]

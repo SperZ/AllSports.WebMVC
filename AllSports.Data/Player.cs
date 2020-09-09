@@ -27,6 +27,7 @@ namespace AllSports.Data
         public string LastName { get; set; }
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
+        [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         public int Age
         {

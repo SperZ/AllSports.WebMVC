@@ -1,14 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:darkblue;
-    color:white;
+    color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+   
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -16,29 +18,41 @@
 */
 .dl-horizontal dt {
     white-space: normal;
+    font-size:20px;
+    font-weight:900;
+    font-family:'Times New Roman', Times, serif;
 }
 
+.dl-horizontal dd{
+    font-family:'Times New Roman', Times, serif;
+    font-size:18px;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 500px;
-    color:black;
+    color:grey;
 }
 
 a{
-    color:antiquewhite;
+    color:black;
 }
 
-.jumbotron{
-    background-color:black;
+.jumbotron {
+    height: 20vw;
+    width: 100vw;
+    background-color: black;
+    text-align:center;
 }
+
 .jumbotron a.btn:hover{
     color: darkblue;
 }
 
 .btn{
-    background-color: black;
+    background-color: navy;
+    color:white;
 }
 
 a.btn{
@@ -51,11 +65,43 @@ a.btn:hover{
 }
 
 input.btn{
-    color: white;
+
 }
 
 ul.nav li
 {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
+    left:0px;
+}   
+
+ul.nav li:hover{
+    color:dimgrey;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 12px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: none;
+}
+
+th{
+    
+    font-size:25px;
+}
+
+td {
+    font-family: cursive;
+    font-size:18px;
+}
+.col-lg-12{
+    text-align:center;
+}
+.col-lg-2{
+    text-align:center;
+}
+
+div dt{
+    text-align:center;
 }

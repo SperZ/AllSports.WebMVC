@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class CoachController : Controller
     {
         public CoachService CreateCoachService()
@@ -21,6 +22,7 @@ namespace AllSports.WebMVC.Controllers
         }
 
         // GET: Coach
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var service = CreateCoachService();
@@ -58,6 +60,7 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var service = CreateCoachService();

@@ -19,6 +19,7 @@ namespace AllSports.Models.PlayerModels
         public string LastName { get; set; }
         [Required]
         [Display(Name = "Date Of Birth")]
+        [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Jersey Number")]
         public int? JerseyNumber { get; set; }
@@ -30,6 +31,7 @@ namespace AllSports.Models.PlayerModels
         public int? YearsWithTeam { get; set; }
         public string College { get; set; }
         [Display(Name = "Twitter Handle")]
+        [DataType(DataType.Url)]
         public string TwitterHandle { get; set; }
         [Display(Name = "Team")]
         public int? TeamId { get; set; }

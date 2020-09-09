@@ -93,6 +93,8 @@ namespace AllSports.Services
                     .Leagues
                     .Single(e => e.LeagueId == model.LeagueId);
                 entity.NumberOfTeams = model.NumberOfTeams;
+                entity.BaseCountry = model.BaseCountry;
+                entity.LeagueName = model.LeagueName;
 
                 return ctx.SaveChanges() == 1;
             }

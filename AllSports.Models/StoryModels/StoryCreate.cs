@@ -11,6 +11,7 @@ namespace AllSports.Models.StoryModels
     {
         [Display(Name = "HeadLine")]
         public string HeadLine { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public int? PlayerId { get; set; }
     }

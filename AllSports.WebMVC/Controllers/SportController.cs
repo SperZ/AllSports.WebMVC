@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class SportController : Controller
     {
-        [Authorize]
         public SportService CreateSportService()
         {
             var userName = User.Identity.GetUserName();
@@ -28,7 +28,6 @@ namespace AllSports.WebMVC.Controllers
         }
 
         //Get: SportsCreate View
-        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -65,7 +64,6 @@ namespace AllSports.WebMVC.Controllers
         }
 
         //Get Delete View
-        [Authorize(Roles = "admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

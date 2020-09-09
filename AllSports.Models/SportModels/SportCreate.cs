@@ -16,6 +16,7 @@ namespace AllSports.Models.SportModels
         [Display(Name = "Year Invented")]
         public int YearInvented { get; set; }
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }
 }

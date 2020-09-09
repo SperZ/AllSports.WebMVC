@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Models.TeamModels
 {
@@ -24,5 +25,6 @@ namespace AllSports.Models.TeamModels
         [Display(Name ="League")]
         public string LeagueName { get; set; }
         public byte[] Contents { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

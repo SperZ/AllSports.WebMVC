@@ -186,6 +186,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\LogoMakr_6GDXaZ.png" />
+    <Content Include="Assets\LogoMakr_9KP5OA.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -250,7 +252,6 @@
     <Content Include="Views\League\Details.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
-    <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
     <Content Include="Views\Fan\Details.cshtml" />
     <Content Include="Views\Player\Delete.cshtml" />
@@ -283,6 +284,7 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Team\Create.cshtml" />
+    <Content Include="Views\Player\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

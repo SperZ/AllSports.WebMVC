@@ -3,6 +3,7 @@ using AllSports.Models.LeagueModels;
 using AllSports.Models.TeamModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -21,6 +22,13 @@ namespace AllSports.Services
         public bool CreateTeam(TeamCreate model)
         {
 
+            byte[] image = null;
+            if (model.File != null)
+            {
+                Stream filestream = model.File.InputStream;
+                BinaryReader reader = new BinaryReader(filestream);
+                image = reader.ReadBytes((Int32)filestream.Length);
+            }
 
             var entity =
                 new Team()
@@ -31,6 +39,8 @@ namespace AllSports.Services
                     State = model.State,
                     Wins = model.Wins,
                     Losses = model.Losses,
+                    File = model.File,
+                    Contents = image
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -89,6 +99,8 @@ namespace AllSports.Services
                         State = entity.State,
                         //CostOfTeam = GetAllPlayersSalary(teamId),
                         LeagueName = entity.League.LeagueName,
+                        Contents =entity.Contents,
+                        File = entity.File
 
                     };
             }
@@ -124,6 +136,13 @@ namespace AllSports.Services
 
         public bool UpdateTeam(TeamEdit model) // not added to controller
         {
+            byte[] image = null;
+            if (model.File != null)
+            {
+                Stream filestream = model.File.InputStream;
+                BinaryReader reader = new BinaryReader(filestream);
+                image = reader.ReadBytes((Int32)filestream.Length);
+            }
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -136,7 +155,8 @@ namespace AllSports.Services
                 entity.Losses = model.Losses;
                 entity.CityName = model.CityName;
                 entity.State = model.State;
-                //entity.Contents = model.Contents;
+                entity.Contents = image;
+                entity.File = model.File;
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -148,7 +168,7 @@ namespace AllSports.Services
                 var allteams =
                     ctx
                     .Fans
-                    .Where(r => r.FanId == fanId)
+                    .Where(f => f.FanId == fanId)
                     .SelectMany(x => x.Teams)
                     .Select(
                         e =>

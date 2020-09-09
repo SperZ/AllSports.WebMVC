@@ -10,8 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
-{
-    [Authorize]
+{    [Authorize]
     public class StoryController : Controller
     {
         public StoryService CreateStoryService()

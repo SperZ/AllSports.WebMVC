@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
-    [Authorize(Roles ="admin")]   
+    [Authorize]   
     public class LeagueController : Controller
     {
         [Authorize]

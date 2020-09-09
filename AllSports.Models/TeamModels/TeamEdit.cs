@@ -18,9 +18,9 @@ namespace AllSports.Models.TeamModels
         public int Losses { get; set; }
         public string CityName { get; set; }
         public StateAbbreviation State { get; set; }
-        //public byte[] Contents { get; set; }
-        //[Display(Name = "Photo")]
-        //[NotMapped]
-        //public HttpPostedFileBase File { get; set; }
+        public byte[] Contents { get; set; }
+        [Display(Name = "Photo")]
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
     }
 }

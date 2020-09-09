@@ -10,9 +10,9 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class PlayerController : Controller
     {
-        [Authorize]
         public PlayerService CreatePlayerService()
         {
             var userName = User.Identity.GetUserName();
@@ -20,6 +20,7 @@ namespace AllSports.WebMVC.Controllers
             return service;
         }
         // GET: Player
+        [AllowAnonymous]
         public ActionResult Index()
         {
             PlayerService service = CreatePlayerService();
@@ -34,7 +35,7 @@ namespace AllSports.WebMVC.Controllers
                         select new SelectListItem()
                         {
                             Value = T.TeamId.ToString(),
-                            Text=T.TeamName
+                            Text = T.TeamName
                         };
             ViewBag.TeamId = query.ToList();
             return View();
@@ -57,7 +58,7 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
-
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var service = CreatePlayerService();
@@ -65,7 +66,7 @@ namespace AllSports.WebMVC.Controllers
 
             return View(model);
         }
-
+        [AllowAnonymous]
         [HttpGet, Route("Player/List/id")]
         public ActionResult List(int id)
         {
@@ -76,37 +77,40 @@ namespace AllSports.WebMVC.Controllers
         public ActionResult Edit(string userName, int id)
         {
             var player = CreatePlayerService().GetPlayerById(id);
-            List<Team> Teams = (new TeamService(userName)).GetTeamsData().ToList();
-            ViewBag.TeamId =Teams.Select(t => new SelectListItem()
-            { Value=t.TeamId.ToString(),
-            Text=t.TeamName,
-            Selected= player.TeamId == t.TeamId}
-            );
+            List<Team> teams = (new TeamService(userName)).GetTeamsData().ToList();
+            ViewBag.TeamId = teams.Select(
+                T => new SelectListItem()
+                {
+                    Value = T.TeamId.ToString(),
+                    Text = T.TeamName,
+                    Selected = player.TeamId == T.TeamId,
+                });
+
             var model =
-                new PlayerEdit 
+                new PlayerEdit
                 {
                     PlayerId = player.PlayerId,
-                    FirstName= player.FirstName,
-                    LastName= player.LastName,
+                    FirstName = player.FirstName,
+                    LastName = player.LastName,
                     JerseyNumber = player.JerseyNumber,
                     Height = player.Height,
-                    Weight= player.Weight,
+                    Weight = player.Weight,
                     YearsWithTeam = player.YearsWithTeam,
                     TwitterHandle = player.TwitterHandle,
                     TeamId = player.TeamId
                 };
 
             return View(model);
-        } 
+        }
 
         [HttpPost]
         [ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, PlayerEdit model) 
+        public ActionResult Edit(int id, PlayerEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(model.PlayerId != id)
+            if (model.PlayerId != id)
             {
                 ModelState.AddModelError("", "Id mismatch");
                 return View(model);
@@ -124,7 +128,7 @@ namespace AllSports.WebMVC.Controllers
         }
 
 
-        
+
         public ActionResult Delete(int id)
         {
             var service = CreatePlayerService();
@@ -142,7 +146,7 @@ namespace AllSports.WebMVC.Controllers
             var service = CreatePlayerService();
             var model = service.GetPlayerById(id);
             service.Delete(id);
-            
+
             TempData["SaveResult"] = $"{model.FirstName} {model.LastName} has been deleted.";
 
             return RedirectToAction("Index");

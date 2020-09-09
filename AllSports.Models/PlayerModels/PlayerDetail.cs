@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AllSports.Models.PlayerModels
 {
-   public class PlayerDetail
+    public class PlayerDetail
     {
         public int PlayerId { get; set; }
         [Display(Name = "First Name")]
@@ -16,6 +17,7 @@ namespace AllSports.Models.PlayerModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
         [Display(Name = "Number")]
@@ -30,6 +32,8 @@ namespace AllSports.Models.PlayerModels
         public int? TeamId { get; set; }
         [Display(Name = "Team")]
         public string TeamName { get; set; }
-        //public byte[] Contents { get; set; }
+        public byte[] Contents { get; set; }
+
+        public HttpPostedFileBase File { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using AllSports.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -19,12 +20,20 @@ namespace AllSports.Services
 
         public bool CreatePlayer(PlayerCreate model)
         {
+            byte[] image = null;
+            if (model.File != null)
+            {
+                Stream filestream = model.File.InputStream;
+                BinaryReader reader = new BinaryReader(filestream);
+                image = reader.ReadBytes((Int32)filestream.Length);
+            }
+
             var player =
             new Player()
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                DateOfBirth = model.DateOfBirth,
+                DateOfBirth = model.DateOfBirth,  
                 JerseyNumber = model.JerseyNumber,
                 Height = model.Height,
                 Weight = model.Weight,
@@ -32,6 +41,8 @@ namespace AllSports.Services
                 College = model.College,
                 TwitterHandle = model.TwitterHandle,
                 TeamId = model.TeamId,
+                Contents = image,
+                File = model.File
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -44,6 +55,7 @@ namespace AllSports.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+
                 var allplayers =
                     ctx
                     .Players
@@ -84,6 +96,7 @@ namespace AllSports.Services
                 return
                     new PlayerDetail()
                     {
+                        Contents=player.Contents,
                         PlayerId = player.PlayerId,
                         FirstName = player.FirstName,
                         LastName = player.LastName,
@@ -95,7 +108,7 @@ namespace AllSports.Services
                         JerseyNumber = player.JerseyNumber,
                         TeamName = GetTeamName(id),
                         College = player.College,
-                        TwitterHandle = GetTwitterHandle(id),
+                        TwitterHandle = GetTwitterHandle(id)
                     };
             }
         }
@@ -130,6 +143,13 @@ namespace AllSports.Services
 
         public bool UpdatePlayer(PlayerEdit model)
         {
+            byte[] image = null;
+            if (model.File != null)
+            {
+                Stream filestream = model.File.InputStream;
+                BinaryReader reader = new BinaryReader(filestream);
+                image = reader.ReadBytes((Int32)filestream.Length);
+            }
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -146,7 +166,8 @@ namespace AllSports.Services
                 updates.YearsWithTeam = model.YearsWithTeam;
                 updates.TeamId = model.TeamId;
                 updates.TwitterHandle = model.TwitterHandle;
-
+                updates.Contents = image;
+                updates.File = model.File;
                 return ctx.SaveChanges() == 1;
 
 

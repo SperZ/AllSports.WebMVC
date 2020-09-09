@@ -10,10 +10,9 @@ using System.Web.Mvc;
 
 namespace AllSports.WebMVC.Controllers
 {
+    [Authorize]
     public class TeamController : Controller
     {
-        // GET: Team
-        [Authorize]
         public TeamService CreateTeamService()
         {
             var userName = User.Identity.GetUserName();
@@ -21,6 +20,7 @@ namespace AllSports.WebMVC.Controllers
             return service;
         }
         // GET: League
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var service = CreateTeamService();
@@ -62,6 +62,7 @@ namespace AllSports.WebMVC.Controllers
         }
 
         [HttpGet, Route("Team/GetTeamsByLeague/id")]
+        [AllowAnonymous]
         public ActionResult GetTeamsByLeague(int id)
         {
             var service = CreateTeamService();
@@ -72,6 +73,7 @@ namespace AllSports.WebMVC.Controllers
 
 
         [HttpGet, Route("Team/TeamList/id")]
+        [AllowAnonymous]
         public ActionResult TeamList(int id)
         {
             var service = CreateTeamService();
@@ -79,7 +81,7 @@ namespace AllSports.WebMVC.Controllers
             return View(model);
         }
 
-
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var service = CreateTeamService();
@@ -141,7 +143,7 @@ namespace AllSports.WebMVC.Controllers
             var service = CreateTeamService();
             var model = service.GetTeamById(id);
             service.Delete(id);
-            TempData["SaveResult"] = $"{model.LeagueName} has been deleted.";
+            TempData["SaveResult"] = $"{model.TeamName} has been deleted.";
 
             return RedirectToAction("Index");
         }

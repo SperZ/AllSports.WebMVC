@@ -25,7 +25,7 @@ namespace AllSports.Services
                     Content = model.Content,
                     PlayerId = model.PlayerId,
                     CreatedUTC = DateTimeOffset.Now,
-                    UserName= _userName,
+                    UserName= _userName
                 };
 
             using(var ctx = new ApplicationDbContext())
@@ -75,6 +75,7 @@ namespace AllSports.Services
                     TeamName = details.Player.Team.TeamName,
                     Content= details.Content,
                     CreatedUtc=details.CreatedUTC,
+                    UserName=details.UserName
                 };
             }
         }
