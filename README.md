@@ -11,7 +11,7 @@ An MVC application created using ASP.NET and Visual Studios. Made for fans by fa
 ## Application Info
 <p>AllSport is a secure MVC where fans can post, edit, view, and delete their favorite teams and players. The wiki for sports, all information is created by users and viewable by anyone who visits the websites.</p>
 
-## Application is available at 
+The application is available at https://allsportswebmvc.azurewebsites.net/
 
 ## Data Layer Elements
 * ILocation - interface
